@@ -1,0 +1,97 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pky_sale_quotation_generator
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-02 01:57+0000\n"
+"PO-Revision-Date: 2017-06-01 22:02-0400\n"
+"Last-Translator: Manuel Marquez <buzondemam@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.10\n"
+"Language: es_MX\n"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,cut_based_on_bottle:0
+msgid "Cut (mm)"
+msgstr "Corte (mm)"
+
+#. module: pky_sale_quotation_generator
+#: model:product.attribute,name:pky_sale_quotation_generator.product_attribute_density
+msgid "Density"
+msgstr "Densidad"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,display_name:0
+msgid "Display Name"
+msgstr ""
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,id:0
+msgid "ID"
+msgstr ""
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,__last_update:0
+msgid "Last Modified on"
+msgstr ""
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: pky_sale_quotation_generator
+#: model:product.attribute,name:pky_sale_quotation_generator.product_attribute_length
+msgid "Length"
+msgstr "Longitud"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,raw_material_product_id:0
+msgid "Material"
+msgstr "Material"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,new_product_generated:0
+msgid "New product generated"
+msgstr "Nuevo producto generado"
+
+#. module: pky_sale_quotation_generator
+#: model:product.attribute,name:pky_sale_quotation_generator.product_attribute_thickness
+msgid "Thickness"
+msgstr "Espesor"
+
+#. module: pky_sale_quotation_generator
+#: model:ir.model,name:pky_sale_quotation_generator.model_sale_quotation_generator
+msgid ""
+"This wizard will generate quotations based on parameters\n"
+"    asociated to the operations of pack system."
+msgstr ""
+"Este asistente le permitirá generar cotizaciones basadas en parametros "
+"asociados a las operaciones de pack system."
+
+#. module: pky_sale_quotation_generator
+#: model:product.attribute,name:pky_sale_quotation_generator.product_attribute_width
+msgid "Width"
+msgstr "Ancho"

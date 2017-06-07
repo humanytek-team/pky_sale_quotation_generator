@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+      <record id="product_attribute_density" model="product.attribute">
+          <field name="name">Density</field>
+      </record>
+
+      <record id="product_attribute_length" model="product.attribute">
+          <field name="name">Length</field>
+      </record>
+
+      <record id="product_attribute_thickness" model="product.attribute">
+          <field name="name">Thickness</field>
+      </record>
+
+      <record id="product_attribute_width" model="product.attribute">
+          <field name="name">Width</field>
+      </record>
+
+    </data>
+</openerp>
