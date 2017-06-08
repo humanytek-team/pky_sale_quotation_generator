@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Products attributes -->
+    <record id="product_attribute_thickness_value_1" model="product.attribute.value">
+      <field name="attribute_id" ref="product_attribute_thickness" />
+      <field name="name">45</field>
+    </record>
+
+    <record id="product_attribute_thickness_value_2" model="product.attribute.value">
+      <field name="attribute_id" ref="product_attribute_thickness" />
+      <field name="name">50</field>
+    </record>
+
+    <record id="product_attribute_thickness_value_3" model="product.attribute.value">
+      <field name="attribute_id" ref="product_attribute_thickness" />
+      <field name="name">40</field>
+    </record>
+
+    <record id="product_attribute_density_value_1" model="product.attribute.value">
+      <field name="attribute_id" ref="product_attribute_density" />
+      <field name="name">1.27</field>
+    </record>
+
+    <record id="product_attribute_density_value_2" model="product.attribute.value">
+      <field name="attribute_id" ref="product_attribute_density" />
+      <field name="name">1.33</field>
+    </record>
+
+    <record id="product_attribute_width_value_1" model="product.attribute.value">
+      <field name="attribute_id" ref="product_attribute_width" />
+      <field name="name">225</field>
+    </record>
+
+    <record id="product_attribute_width_value_2" model="product.attribute.value">
+      <field name="attribute_id" ref="product_attribute_width" />
+      <field name="name">181</field>
+    </record>
+
+    <!-- Products -->
+    <record id="product_petg" model="product.product">
+      <field name="name">PETG</field>
+      <field name="standard_price" eval="5.85" />
+      <field name="cost_currency_id" ref="base.USD" />
+      <field name="default_code">PET-01</field>
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_1'), ref('product_attribute_density_value_1')])]"/>
+      <field name="sale_ok" eval="False" />
+    </record>
+
+    <record id="product_petgb" model="product.product">
+      <field name="default_code">PET-02</field>
+      <field name="product_tmpl_id" ref="product_petg_product_template" />
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_2'), ref('product_attribute_density_value_1')])]"/>
+    </record>
+
+    <record id="product_petg_c" model="product.product">
+      <field name="default_code">PET-10</field>
+      <field name="product_tmpl_id" ref="product_petg_product_template" />
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_3'), ref('product_attribute_density_value_1')])]"/>
+    </record>
+
+    <record id="product_petg_attribute_line_1" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_thickness" />
+      <field name="product_tmpl_id" ref="product_petg_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_thickness_value_1'), ref('product_attribute_thickness_value_2'), ref('product_attribute_thickness_value_3')])]" />
+    </record>
+
+    <record id="product_petg_attribute_line_2" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_density" />
+      <field name="product_tmpl_id" ref="product_petg_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_density_value_1')])]" />
+    </record>
+
+    <record id="product_petga_ms" model="product.product">
+      <field name="name">PETGA-MS</field>
+      <field name="standard_price" eval="4.80" />
+      <field name="cost_currency_id" ref="base.USD" />
+      <field name="description">INDIA encogimiento MEDIO</field>
+      <field name="default_code">PET-03</field>
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_3'), ref('product_attribute_density_value_1')])]"/>
+      <field name="sale_ok" eval="False" />
+    </record>
+
+    <record id="product_petga_ms_attribute_line_1" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_thickness" />
+      <field name="product_tmpl_id" ref="product_petga_ms_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_thickness_value_3')])]" />
+    </record>
+
+    <record id="product_petga_ms_attribute_line_2" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_density" />
+      <field name="product_tmpl_id" ref="product_petga_ms_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_density_value_1')])]" />
+    </record>
+
+    <record id="product_petga" model="product.product">
+      <field name="name">PETGA</field>
+      <field name="standard_price" eval="4.95" />
+      <field name="cost_currency_id" ref="base.USD" />
+      <field name="description">INDIA encogimiento normal</field>
+      <field name="default_code">PET-04</field>
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_3'), ref('product_attribute_density_value_1')])]"/>
+      <field name="sale_ok" eval="False" />
+    </record>
+
+    <record id="product_petga_b" model="product.product">
+      <field name="default_code">PET-05</field>
+      <field name="product_tmpl_id" ref="product_petga_product_template" />
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_1'), ref('product_attribute_density_value_1')])]"/>
+    </record>
+
+    <record id="product_petga_attribute_line_1" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_thickness" />
+      <field name="product_tmpl_id" ref="product_petga_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_thickness_value_3'), ref('product_attribute_thickness_value_1')])]" />
+    </record>
+
+    <record id="product_petga_attribute_line_2" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_density" />
+      <field name="product_tmpl_id" ref="product_petga_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_density_value_1')])]" />
+    </record>
+
+    <record id="product_pvc" model="product.product">
+      <field name="name">PVC</field>
+      <field name="standard_price" eval="3.50" />
+      <field name="cost_currency_id" ref="base.USD" />
+      <field name="description">Para 3 Tintas o menos</field>
+      <field name="default_code">PVC-01</field>
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_2'), ref('product_attribute_density_value_2'), ref('product_attribute_width_value_1')])]"/>
+      <field name="sale_ok" eval="False" />
+    </record>
+
+    <record id="product_pvc_b" model="product.product">
+      <field name="default_code">PVC-02</field>
+      <field name="product_tmpl_id" ref="product_pvc_product_template" />
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_2'), ref('product_attribute_density_value_2'), ref('product_attribute_width_value_2')])]"/>
+    </record>
+
+    <record id="product_pvc_c" model="product.product">
+      <field name="name">PVC</field>
+      <field name="standard_price" eval="5.35" />
+      <field name="cost_currency_id" ref="base.USD" />
+      <field name="default_code">PVC-03</field>
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_3'), ref('product_attribute_density_value_2')])]"/>
+      <field name="sale_ok" eval="False" />
+    </record>
+
+    <record id="product_pvc_d" model="product.product">
+      <field name="default_code">PVC-05</field>
+      <field name="product_tmpl_id" ref="product_pvc_c_product_template" />
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_2'), ref('product_attribute_density_value_2')])]"/>
+    </record>
+
+    <record id="product_pvc_sx" model="product.product">
+      <field name="name">PVC-SX</field>
+      <field name="standard_price" eval="4.60" />
+      <field name="cost_currency_id" ref="base.USD" />
+      <field name="default_code">PVC-06</field>
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_3'), ref('product_attribute_density_value_2')])]"/>
+      <field name="sale_ok" eval="False" />
+    </record>
+
+    <record id="product_pvc_sx_b" model="product.product">
+      <field name="default_code">PVC-07</field>
+      <field name="product_tmpl_id" ref="product_pvc_sx_product_template" />
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_2'), ref('product_attribute_density_value_2')])]"/>
+    </record>
+
+    <record id="product_pvc_e" model="product.product">
+      <field name="name">PVC</field>
+      <field name="description">SOPLADO</field>
+      <field name="standard_price" eval="4.55" />
+      <field name="cost_currency_id" ref="base.USD" />
+      <field name="default_code">PVC-08</field>
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_thickness_value_3'), ref('product_attribute_density_value_2')])]"/>
+      <field name="sale_ok" eval="False" />
+    </record>
+
+    <record id="product_pvc_f" model="product.product">
+      <field name="name">PVC</field>
+      <field name="description">2,501 A 10,000 KG</field>
+      <field name="standard_price" eval="4.77" />
+      <field name="cost_currency_id" ref="base.USD" />
+      <field name="default_code">PVC-09</field>
+      <field name="attribute_value_ids" eval="[(6,0,[ref('product_attribute_density_value_2')])]"/>
+      <field name="sale_ok" eval="False" />
+    </record>
+
+    <record id="product_pvc_attribute_line_1" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_thickness" />
+      <field name="product_tmpl_id" ref="product_pvc_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_thickness_value_2')])]" />
+    </record>
+
+    <record id="product_pvc_attribute_line_2" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_density" />
+      <field name="product_tmpl_id" ref="product_pvc_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_density_value_2')])]" />
+    </record>
+
+    <record id="product_pvc_attribute_line_3" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_width" />
+      <field name="product_tmpl_id" ref="product_pvc_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_width_value_1'), ref('product_attribute_width_value_2')])]" />
+    </record>
+
+    <record id="product_pvc_c_attribute_line_1" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_thickness" />
+      <field name="product_tmpl_id" ref="product_pvc_c_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_thickness_value_3'), ref('product_attribute_thickness_value_2')])]" />
+    </record>
+
+    <record id="product_pvc_c_attribute_line_2" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_density" />
+      <field name="product_tmpl_id" ref="product_pvc_c_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_density_value_2')])]" />
+    </record>
+
+    <record id="product_pvc_sx_attribute_line_1" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_thickness" />
+      <field name="product_tmpl_id" ref="product_pvc_sx_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_thickness_value_3'), ref('product_attribute_thickness_value_2')])]" />
+    </record>
+
+    <record id="product_pvc_sx_attribute_line_2" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_density" />
+      <field name="product_tmpl_id" ref="product_pvc_sx_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_density_value_2')])]" />
+    </record>
+
+    <record id="product_pvc_e_attribute_line_1" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_thickness" />
+      <field name="product_tmpl_id" ref="product_pvc_e_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_thickness_value_3')])]" />
+    </record>
+
+    <record id="product_pvc_e_attribute_line_2" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_density" />
+      <field name="product_tmpl_id" ref="product_pvc_e_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_density_value_2')])]" />
+    </record>
+
+    <record id="product_pvc_f_attribute_line_1" model="product.attribute.line">
+      <field name="attribute_id" ref="product_attribute_density" />
+      <field name="product_tmpl_id" ref="product_pvc_f_product_template" />
+      <field name="value_ids" eval="[(6, 0, [ref('product_attribute_density_value_2')])]" />
+    </record>
+
+    <!-- Supplier Info -->
+    <record id="product_petg_supplierinfo" model="product.supplierinfo">
+      <field name="name" ref="supplier_1" />
+      <field name="product_tmpl_id" ref="product_petg_product_template" />
+    </record>
+
+    <record id="product_petga_ms_supplierinfo" model="product.supplierinfo">
+      <field name="name" ref="supplier_1" />
+      <field name="product_tmpl_id" ref="product_petga_ms_product_template" />
+    </record>
+
+    <record id="product_petga_supplierinfo" model="product.supplierinfo">
+      <field name="name" ref="supplier_1" />
+      <field name="product_tmpl_id" ref="product_petga_product_template" />
+    </record>
+
+    <record id="product_pvc_supplierinfo" model="product.supplierinfo">
+      <field name="name" ref="supplier_2" />
+      <field name="product_tmpl_id" ref="product_pvc_product_template" />
+    </record>
+
+    <record id="product_pvc_c_supplierinfo" model="product.supplierinfo">
+      <field name="name" ref="supplier_1" />
+      <field name="product_tmpl_id" ref="product_pvc_c_product_template" />
+    </record>
+
+    <record id="product_pvc_sx_supplierinfo" model="product.supplierinfo">
+      <field name="name" ref="supplier_1" />
+      <field name="product_tmpl_id" ref="product_pvc_sx_product_template" />
+    </record>
+
+    <record id="product_pvc_e_supplierinfo" model="product.supplierinfo">
+      <field name="name" ref="supplier_1" />
+      <field name="product_tmpl_id" ref="product_pvc_e_product_template" />
+    </record>
+
+    <record id="product_pvc_f_supplierinfo" model="product.supplierinfo">
+      <field name="name" ref="supplier_3" />
+      <field name="product_tmpl_id" ref="product_pvc_f_product_template" />
+    </record>
+
+  </data>
+</openerp>
