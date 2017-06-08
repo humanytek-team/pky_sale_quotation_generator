@@ -11,12 +11,27 @@
                       This wizard will generate quotations based on parameters asociated to the
                       operations of pack system.
                     </p>
-                    <group string="Material" col="4">
+                    <group>
+                    <group string="Material" col="2">
                         <field name="raw_material_product_id" />
                         <field name="raw_material_product_standard_price" />
                         <field name="raw_material_product_cost_currency_id" />
-                        <field name="raw_material_product_seller_ids" />
+                        <separator string="Attributes" />
+                        <newline />
+                        <field name="raw_material_product_attr_value_ids" nolabel="1" colspan="2">
+                          <tree>
+                            <field name="attribute_id" />
+                            <field name="name" />
+                          </tree>
+                        </field>
+                        <newline />
+                        <separator string="Sellers" />
+                        <newline />
+                        <field name="raw_material_product_seller_ids" nolabel="1" colspan="2"/>
                     </group>
+                    <group string="Flat width based on bottle" col="2">
+                    </group>
+                  </group>
                     <footer>
                         <button
                           string="Generate quotations"

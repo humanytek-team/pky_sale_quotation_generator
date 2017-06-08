@@ -7,7 +7,7 @@
       </record>
 
       <record id="product_attribute_length" model="product.attribute">
-          <field name="name">Length</field>
+          <field name="name">Length (m)</field>
       </record>
 
       <record id="product_attribute_thickness" model="product.attribute">

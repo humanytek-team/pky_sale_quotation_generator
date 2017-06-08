@@ -24,5 +24,8 @@ class SaleQuotationGenerator(models.TransientModel):
     raw_material_product_seller_ids = fields.One2many(
         related='raw_material_product_id.seller_ids'
     )
+    raw_material_product_attr_value_ids = fields.Many2many(
+        related='raw_material_product_id.attribute_value_ids'
+    )
     new_product_generated = fields.Char('New product generated', required=True)
     cut_based_on_bottle = fields.Float('Cut (mm)', required=True)
