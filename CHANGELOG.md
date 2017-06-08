@@ -7,3 +7,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - Add new wizard, for now only just request the material (product) to use for the quotation to generate for the new product to be manufactured.
+- Data of products demo added.

@@ -18,5 +18,7 @@
         'wizard/sale_quotation_generator_view.xml',
     ],
     'demo': [
+        'demo/suppliers.xml',
+        'demo/products.xml',
     ],
 }
