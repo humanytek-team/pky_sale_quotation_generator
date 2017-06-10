@@ -27,5 +27,44 @@ class SaleQuotationGenerator(models.TransientModel):
     raw_material_product_attr_value_ids = fields.Many2many(
         related='raw_material_product_id.attribute_value_ids'
     )
+    raw_material_product_length_mm = fields.Float(
+        compute='_compute_length_mm'
+    )
     new_product_generated = fields.Char('New product generated', required=True)
+    total_thousands_new_product = fields.Float(
+        'Thousands', compute='_compute_total_thousands')
     cut_based_on_bottle = fields.Float('Cut (mm)', required=True)
+
+    @api.depends('raw_material_product_id')
+    def _compute_length_mm(self):
+        """Compute value of field raw_material_product_length_mm, the value is
+        the result of process of the attribute length of the product converting it from
+        meters to millimeters."""
+
+        for rec in self:
+            rec.raw_material_product_length_mm = False
+
+            if rec.raw_material_product_id:
+                attr_length_object = self.env.ref(
+                    'pky_sale_quotation_generator.product_attribute_length')
+                product_has_attr_length = [attr.name for attr in
+                    rec.raw_material_product_id.attribute_value_ids
+                    if attr.attribute_id == attr_length_object]
+
+                if product_has_attr_length:
+                    rec.raw_material_product_length_mm = \
+                        float(product_has_attr_length[0]) * 1000
+
+    @api.depends('raw_material_product_length_mm', 'cut_based_on_bottle')
+    def _compute_total_thousands(self):
+        """Compute value of field total_thousands_new_product, the value will be
+        the total thousands of the new product in the quotation to generate."""
+
+        for rec in self:
+            rec.total_thousands_new_product = False
+
+            if rec.raw_material_product_length_mm and rec.cut_based_on_bottle:
+                rec.total_thousands_new_product = (
+                    rec.raw_material_product_length_mm / (
+                        rec.cut_based_on_bottle * 1000
+                    )) * 0.9

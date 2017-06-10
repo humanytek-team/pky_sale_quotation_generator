@@ -7,12 +7,15 @@
             <field name="model">sale.quotation.generator</field>
             <field name="arch" type="xml">
                 <form string="Quotations Generator">
+
                     <p class="oe_grey">
                       This wizard will generate quotations based on parameters asociated to the
                       operations of pack system.
                     </p>
+
                     <group>
-                    <group string="Material" col="2">
+
+                      <group string="Material" col="2">
                         <field name="raw_material_product_id" />
                         <field name="raw_material_product_standard_price" />
                         <field name="raw_material_product_cost_currency_id" />
@@ -28,10 +31,26 @@
                         <separator string="Sellers" />
                         <newline />
                         <field name="raw_material_product_seller_ids" nolabel="1" colspan="2"/>
+                      </group>
+
+                      <group string="Flat width based on bottle" col="2">
+                        <field name="cut_based_on_bottle" />
+                      </group>
+
                     </group>
-                    <group string="Flat width based on bottle" col="2">
+
+                    <group>
+
+                      <group string="Producto a cotizar" col="2">
+                        <field name="new_product_generated" />
+                        <field name="total_thousands_new_product" />
+                      </group>
+
+                      <group col="2">
+                      </group>
+
                     </group>
-                  </group>
+
                     <footer>
                         <button
                           string="Generate quotations"
