@@ -2,7 +2,8 @@
 
 from openerp import api, fields, models
 from openerp.tools.translate import _
-
+import logging
+_logger = logging.getLogger(__name__)
 class SaleQuotationGenerator(models.TransientModel):
     """
     This wizard will generate quotations based on parameters asociated to the
@@ -34,6 +35,7 @@ class SaleQuotationGenerator(models.TransientModel):
     total_thousands_new_product = fields.Float(
         'Thousands', compute='_compute_total_thousands')
     cut_based_on_bottle = fields.Float('Cut (mm)', required=True)
+    current_rate_usd = fields.Float(compute='_compute_current_rate_usd')
 
     @api.depends('raw_material_product_id')
     def _compute_length_mm(self):
@@ -68,3 +70,15 @@ class SaleQuotationGenerator(models.TransientModel):
                     rec.raw_material_product_length_mm / (
                         rec.cut_based_on_bottle * 1000
                     )) * 0.9
+
+    @api.depends('raw_material_product_id')
+    def _compute_current_rate_usd(self):
+        """Compute value of field current_rate_usd, return current rate of
+        currency USD."""
+
+        for record in self:
+            record.current_rate_usd = False
+            usd_currency = self.env.ref('base.USD')
+            mxn_currency = self.env.ref('base.MXN')
+            if usd_currency and mxn_currency:
+                record.current_rate_usd = usd_currency.compute(1, mxn_currency)

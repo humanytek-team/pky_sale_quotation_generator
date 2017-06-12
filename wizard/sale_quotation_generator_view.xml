@@ -19,7 +19,8 @@
                         <field name="raw_material_product_id" />
                         <field name="raw_material_product_standard_price" />
                         <field name="raw_material_product_cost_currency_id" />
-                        <separator string="Attributes" />
+                        <field name="current_rate_usd" />
+                        <separator string="Attributes" colspan="4"/>
                         <newline />
                         <field name="raw_material_product_attr_value_ids" nolabel="1" colspan="2">
                           <tree>
