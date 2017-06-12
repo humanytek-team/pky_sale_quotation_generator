@@ -36,6 +36,17 @@ class SaleQuotationGenerator(models.TransientModel):
         'Thousands', compute='_compute_total_thousands')
     cut_based_on_bottle = fields.Float('Cut (mm)', required=True)
     current_rate_usd = fields.Float(compute='_compute_current_rate_usd')
+    ink_product_id = fields.Many2one(
+        'product.product', 'Ink', required=True)
+    ink_product_standard_price = fields.Float(
+        related='ink_product_id.standard_price'
+    )
+    ink_product_cost_currency_id = fields.Many2one(
+        related='ink_product_id.cost_currency_id'
+    )
+    ink_product_quantity = fields.Integer('Number of inks')
+    total_ink_cost = fields.Float(
+        'Total ink cost', compute='_compute_total_ink_cost')
 
     @api.depends('raw_material_product_id')
     def _compute_length_mm(self):
@@ -82,3 +93,31 @@ class SaleQuotationGenerator(models.TransientModel):
             mxn_currency = self.env.ref('base.MXN')
             if usd_currency and mxn_currency:
                 record.current_rate_usd = usd_currency.compute(1, mxn_currency)
+
+    @api.depends(
+        'ink_product_standard_price',
+        'ink_product_quantity',
+        'current_rate_usd',
+        'ink_product_cost_currency_id')
+    def _compute_total_ink_cost(self):
+        """Compute value of field total_ink_cost"""
+
+        for record in self:
+            record.total_ink_cost = False
+            if record.ink_product_standard_price and \
+                record.ink_product_quantity and record.current_rate_usd:
+                if record.ink_product_cost_currency_id:
+                    usd_currency = self.env.ref('base.USD')
+                    mxn_currency = self.env.ref('base.MXN')
+                    if record.ink_product_cost_currency_id == usd_currency:
+                        record.total_ink_cost = (
+                            record.ink_product_standard_price *
+                            record.current_rate_usd) \
+                            * record.ink_product_quantity
+                    elif record.ink_product_cost_currency_id == mxn_currency:
+                        record.total_ink_cost = \
+                            record.ink_product_standard_price * \
+                            record.ink_product_quantity
+                else:
+                    record.total_ink_cost = record.ink_product_standard_price * \
+                        record.ink_product_quantity
