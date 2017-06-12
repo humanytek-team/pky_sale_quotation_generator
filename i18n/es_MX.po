@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-12 21:24+0000\n"
-"PO-Revision-Date: 2017-06-12 17:26-0400\n"
+"POT-Creation-Date: 2017-06-12 21:51+0000\n"
+"PO-Revision-Date: 2017-06-12 17:53-0400\n"
 "Last-Translator: Manuel Marquez <buzondemam@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -99,11 +99,13 @@ msgid "Created on"
 msgstr "Created on"
 
 #. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,ink_product_cost_currency_id:0
 #: field:sale.quotation.generator,raw_material_product_cost_currency_id:0
 msgid "Currency"
 msgstr "Moneda"
 
 #. module: pky_sale_quotation_generator
+#: help:sale.quotation.generator,ink_product_cost_currency_id:0
 #: help:sale.quotation.generator,raw_material_product_cost_currency_id:0
 msgid "Currency used in cost of the product."
 msgstr "Moneda del precio de coste del producto"
@@ -137,6 +139,11 @@ msgstr "Ancho plano en base a botella"
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Generate quotations"
 msgstr "Generar Cotizaciones"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,glue_other_expenses:0
+msgid "Glue and Other Expenses"
+msgstr "Pegamento y Otros Gastos"
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,id:0

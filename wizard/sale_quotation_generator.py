@@ -47,6 +47,7 @@ class SaleQuotationGenerator(models.TransientModel):
     ink_product_quantity = fields.Integer('Number of inks')
     total_ink_cost = fields.Float(
         'Total ink cost', compute='_compute_total_ink_cost')
+    glue_other_expenses = fields.Float('Glue and Other Expenses')
 
     @api.depends('raw_material_product_id')
     def _compute_length_mm(self):
