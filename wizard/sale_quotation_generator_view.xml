@@ -32,6 +32,13 @@
                         <separator string="Sellers" />
                         <newline />
                         <field name="raw_material_product_seller_ids" nolabel="1" colspan="2"/>
+                        <newline />
+                        <separator string="Inks" />
+                        <newline />
+                        <field name="ink_product_id" />
+                        <field name="ink_product_quantity" />
+                        <field name="total_ink_cost" />
+                        <field name="glue_other_expenses" />
                       </group>
 
                       <group string="Flat width based on bottle" col="2">
