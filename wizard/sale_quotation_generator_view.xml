@@ -43,13 +43,16 @@
 
                       <group string="Flat width based on bottle" col="2">
                         <field name="cut_based_on_bottle" />
+                        <field name="flat_width_mm" />
+                        <field name="overlapping" />
+                        <field name="coil_width_mm" />
                       </group>
 
                     </group>
 
                     <group>
 
-                      <group string="Producto a cotizar" col="2">
+                      <group string="Product to quote" col="2">
                         <field name="new_product_generated" />
                         <field name="total_thousands_new_product" />
                       </group>
@@ -58,6 +61,25 @@
                       </group>
 
                     </group>
+
+                    <separator string="Value in percentage of raw material on total sale price per thousand
+" />
+                    <group>
+
+                      <group col="2">
+                        <field name="max_percentage_raw_material_on_sale_price" />
+                      </group>
+
+                      <group col="2">
+                        <field name="min_percentage_raw_material_on_sale_price" />
+                      </group>
+
+                    </group>
+
+                    <!-- Hidden Fields -->
+                    <field name="raw_material_product_length_mm" invisible="1"/>
+                    <field name="raw_material_product_length_cm" invisible="1"/>
+                    <field name="coil_width_cm" invisible="1"/>
 
                     <footer>
                         <button

@@ -31,6 +31,12 @@ class SaleQuotationGenerator(models.TransientModel):
     raw_material_product_length_mm = fields.Float(
         compute='_compute_length_mm'
     )
+    raw_material_product_length_cm = fields.Float(
+        compute='_compute_length_cm'
+    )
+    raw_material_product_thickness_cm = fields.Float(
+        compute='_compute_thickness_cm'
+    )
     new_product_generated = fields.Char('New product generated', required=True)
     total_thousands_new_product = fields.Float(
         'Thousands', compute='_compute_total_thousands')
@@ -48,6 +54,16 @@ class SaleQuotationGenerator(models.TransientModel):
     total_ink_cost = fields.Float(
         'Total ink cost', compute='_compute_total_ink_cost')
     glue_other_expenses = fields.Float('Glue and Other Expenses')
+    flat_width_mm = fields.Float('Flat Width (mm)')
+    overlapping = fields.Float('Overlapping')
+    coil_width_mm = fields.Float(
+        'Coil Width (mm)', compute='_compute_coil_width_mm')
+    coil_width_cm = fields.Float(
+        'Coil Width (cm)', compute='_compute_coil_width_cm')
+    max_percentage_raw_material_on_sale_price = fields.Float(
+        'Max percentage')
+    min_percentage_raw_material_on_sale_price = fields.Float(
+        'Min percentage')
 
     @api.depends('raw_material_product_id')
     def _compute_length_mm(self):
@@ -68,6 +84,37 @@ class SaleQuotationGenerator(models.TransientModel):
                 if product_has_attr_length:
                     rec.raw_material_product_length_mm = \
                         float(product_has_attr_length[0]) * 1000
+
+    @api.depends('raw_material_product_length_mm')
+    def _compute_length_cm(self):
+        """Compute value of field raw_material_product_length_cm, the value is
+        the result of process the value of field raw_material_product_length_mm
+        converting it from millimeters to cm."""
+
+        for rec in self:
+            rec.raw_material_product_length_cm = False
+            if rec.raw_material_product_length_mm:
+                rec.raw_material_product_length_cm = \
+                    rec.raw_material_product_length_mm * 0.1
+
+    @api.depends('raw_material_product_id')
+    def _compute_thickness_cm(self):
+        """Compute value of field raw_material_product_thickness_cm, the value is
+        the result of process of the attribute thickness of the product
+        converting it from microns to centimeters."""
+
+        for rec in self:
+            rec.raw_material_product_thickness_cm = False
+
+            if rec.raw_material_product_id:
+                attr_thickness_object = self.env.ref(
+                    'pky_sale_quotation_generator.product_attribute_thickness')
+                product_has_attr_thickness = [attr.name for attr in
+                    rec.raw_material_product_id.attribute_value_ids
+                    if attr.attribute_id == attr_thickness_object]
+                if product_has_attr_thickness:
+                    rec.raw_material_product_thickness_cm = \
+                        float(product_has_attr_thickness[0]) / 10000
 
     @api.depends('raw_material_product_length_mm', 'cut_based_on_bottle')
     def _compute_total_thousands(self):
@@ -122,3 +169,21 @@ class SaleQuotationGenerator(models.TransientModel):
                 else:
                     record.total_ink_cost = record.ink_product_standard_price * \
                         record.ink_product_quantity
+
+    @api.depends('flat_width_mm', 'overlapping')
+    def _compute_coil_width_mm(self):
+        """Compute the value of field coil_width_mm"""
+
+        for record in self:
+            record.coil_width_mm = False
+            if record.flat_width_mm and record.overlapping:
+                record.coil_width_mm = record.flat_width_mm * 2 + record.overlapping
+
+    @api.depends('coil_width_mm')
+    def _compute_coil_width_cm(self):
+        """Compute the value of field coil_width_cm"""
+
+        for record in self:
+            record.coil_width_cm = False
+            if record.coil_width_mm:
+                record.coil_width_cm = record.coil_width_mm * 0.1

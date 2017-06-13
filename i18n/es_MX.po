@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-12 21:51+0000\n"
-"PO-Revision-Date: 2017-06-12 17:53-0400\n"
+"POT-Creation-Date: 2017-06-13 04:13+0000\n"
+"PO-Revision-Date: 2017-06-13 00:26-0400\n"
 "Last-Translator: Manuel Marquez <buzondemam@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -74,6 +74,16 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,coil_width_cm:0
+msgid "Coil Width (cm)"
+msgstr "Ancho de Bobina (cm)"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,coil_width_mm:0
+msgid "Coil Width (mm)"
+msgstr "Ancho de Bobina (mm)"
+
+#. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,ink_product_standard_price:0
 #: field:sale.quotation.generator,raw_material_product_standard_price:0
 msgid "Cost Price"
@@ -129,6 +139,11 @@ msgstr "Densidad"
 #: field:sale.quotation.generator,display_name:0
 msgid "Display Name"
 msgstr "Display Name"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,flat_width_mm:0
+msgid "Flat Width (mm)"
+msgstr "Ancho Plano (mm)"
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
@@ -189,13 +204,23 @@ msgstr "Last Updated on"
 #. module: pky_sale_quotation_generator
 #: model:product.attribute,name:pky_sale_quotation_generator.product_attribute_length
 msgid "Length (m)"
-msgstr "Length (m)"
+msgstr "Longitud (m)"
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 #: field:sale.quotation.generator,raw_material_product_id:0
 msgid "Material"
 msgstr "Material"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,max_percentage_raw_material_on_sale_price:0
+msgid "Max percentage"
+msgstr "Porcentaje Máximo"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,min_percentage_raw_material_on_sale_price:0
+msgid "Min percentage"
+msgstr "Porcentaje Mínimo"
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,new_product_generated:0
@@ -206,6 +231,11 @@ msgstr "Producto"
 #: field:sale.quotation.generator,ink_product_quantity:0
 msgid "Number of inks"
 msgstr "Número de Tintas"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,overlapping:0
+msgid "Overlapping"
+msgstr "Traslape"
 
 #. module: pky_sale_quotation_generator
 #: model:product.template,name:pky_sale_quotation_generator.product_petg_c_product_template
@@ -249,8 +279,8 @@ msgstr "Para 3 Tintas o menos"
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
-msgid "Producto a cotizar"
-msgstr "Producto a cotizar"
+msgid "Product to quote"
+msgstr "Producto a Cotizar"
 
 #. module: pky_sale_quotation_generator
 #: model:ir.actions.act_window,name:pky_sale_quotation_generator.action_sale_quotation_generator
@@ -260,9 +290,19 @@ msgid "Quotations Generator"
 msgstr "Generador de Cotizaciones"
 
 #. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,raw_material_product_length_cm:0
+msgid "Raw material product length cm"
+msgstr "Longitud (cm) del material"
+
+#. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,raw_material_product_length_mm:0
 msgid "Raw material product length mm"
 msgstr "Longitud (mm) del material"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,raw_material_product_thickness_cm:0
+msgid "Raw material product thickness cm"
+msgstr "Espesor (cm) del material"
 
 #. module: pky_sale_quotation_generator
 #: model:product.template,description:pky_sale_quotation_generator.product_pvc_e_product_template
@@ -299,8 +339,8 @@ msgid ""
 "This wizard will generate quotations based on parameters asociated to the\n"
 "                      operations of pack system."
 msgstr ""
-"This wizard will generate quotations based on parameters asociated to the\n"
-"                      operations of pack system."
+"Este asistente le permite generar cotizaciones basado en las operaciones de "
+"la compañía"
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,total_thousands_new_product:0
@@ -311,6 +351,12 @@ msgstr "Millares"
 #: field:sale.quotation.generator,total_ink_cost:0
 msgid "Total ink cost"
 msgstr "Costo Total "
+
+#. module: pky_sale_quotation_generator
+#: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
+msgid "Value in percentage of raw material on total sale price per thousand"
+msgstr ""
+"Valor en porcentaje de materia prima sobre precio de venta total por millar"
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute,name:pky_sale_quotation_generator.product_attribute_width
