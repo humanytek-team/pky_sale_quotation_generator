@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-13 04:13+0000\n"
-"PO-Revision-Date: 2017-06-13 00:26-0400\n"
+"POT-Creation-Date: 2017-06-13 23:07+0000\n"
+"PO-Revision-Date: 2017-06-13 19:33-0400\n"
 "Last-Translator: Manuel Marquez <buzondemam@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -69,9 +69,19 @@ msgid "Attributes"
 msgstr "Propiedades del Material"
 
 #. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,business_value:0
+msgid "Business Value"
+msgstr "Valor de Negocio"
+
+#. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Cancel"
 msgstr "Cancelar"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,coil_weight_kg:0
+msgid "Coil Weight (kg)"
+msgstr "Peso de Bobina (kg)"
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,coil_width_cm:0
@@ -88,6 +98,11 @@ msgstr "Ancho de Bobina (mm)"
 #: field:sale.quotation.generator,raw_material_product_standard_price:0
 msgid "Cost Price"
 msgstr "Precio de Coste"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,cost_per_thousand:0
+msgid "Cost per thousand"
+msgstr "Costo por Millar"
 
 #. module: pky_sale_quotation_generator
 #: help:sale.quotation.generator,ink_product_standard_price:0
@@ -218,9 +233,39 @@ msgid "Max percentage"
 msgstr "Porcentaje Máximo"
 
 #. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,max_mxn_sale_price_per_thousand_with_printing:0
+msgid "Maximum Sale Price (MXN) per Thousand With Printing"
+msgstr "Precio de Venta Máximo (MXN) por Millar con Impresión"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,max_usd_sale_price_per_thousand_with_printing:0
+msgid "Maximum Sale Price (USD) per Thousand With Printing"
+msgstr "Precio de Venta Máximo (USD) por Millar con Impresión"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,max_sale_price_per_thousand_without_printing:0
+msgid "Maximum Sale Price per Thousand Without Printing"
+msgstr "Precio de Venta Máximo por Millar sin Impresión"
+
+#. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,min_percentage_raw_material_on_sale_price:0
 msgid "Min percentage"
 msgstr "Porcentaje Mínimo"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,min_mxn_sale_price_per_thousand_with_printing:0
+msgid "Minimum Sale Price (MXN) per Thousand With Printing"
+msgstr "Precio de Venta Mínimo (MXN) por Millar con Impresión"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,min_usd_sale_price_per_thousand_with_printing:0
+msgid "Minimum Sale Price (USD) per Thousand With Printing"
+msgstr "Precio de Venta Mínimo (USD) por Millar con Impresión"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,min_sale_price_per_thousand_without_printing:0
+msgid "Minimum Sale Price per Thousand Without Printing"
+msgstr "Precio de Venta Mínimo por Millar sin Impresión"
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,new_product_generated:0
@@ -305,6 +350,11 @@ msgid "Raw material product thickness cm"
 msgstr "Espesor (cm) del material"
 
 #. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,required_initial_volume:0
+msgid "Required initial volume"
+msgstr "Volumen Inicial Requerido"
+
+#. module: pky_sale_quotation_generator
 #: model:product.template,description:pky_sale_quotation_generator.product_pvc_e_product_template
 msgid "SOPLADO"
 msgstr "SOPLADO"
@@ -346,6 +396,11 @@ msgstr ""
 #: field:sale.quotation.generator,total_thousands_new_product:0
 msgid "Thousands"
 msgstr "Millares"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,total_cost_coil:0
+msgid "Total Cost of the Coil"
+msgstr "Costo Total de la Bobina"
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,total_ink_cost:0

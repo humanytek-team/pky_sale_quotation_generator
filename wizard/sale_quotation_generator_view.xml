@@ -32,13 +32,6 @@
                         <separator string="Sellers" />
                         <newline />
                         <field name="raw_material_product_seller_ids" nolabel="1" colspan="2"/>
-                        <newline />
-                        <separator string="Inks" />
-                        <newline />
-                        <field name="ink_product_id" />
-                        <field name="ink_product_quantity" />
-                        <field name="total_ink_cost" />
-                        <field name="glue_other_expenses" />
                       </group>
 
                       <group string="Flat width based on bottle" col="2">
@@ -46,18 +39,19 @@
                         <field name="flat_width_mm" />
                         <field name="overlapping" />
                         <field name="coil_width_mm" />
-                      </group>
+                        <newline />
 
-                    </group>
+                        <separator string="Inks" />
+                        <newline />
+                        <field name="ink_product_id" />
+                        <field name="ink_product_quantity" />
+                        <field name="total_ink_cost" />
+                        <field name="glue_other_expenses" />
 
-                    <group>
-
-                      <group string="Product to quote" col="2">
+                        <separator string="Product to quote" />
+                        <newline />
                         <field name="new_product_generated" />
                         <field name="total_thousands_new_product" />
-                      </group>
-
-                      <group col="2">
                       </group>
 
                     </group>
@@ -68,18 +62,30 @@
 
                       <group col="2">
                         <field name="max_percentage_raw_material_on_sale_price" />
+                        <field name="max_sale_price_per_thousand_without_printing" />
+                        <field name="max_mxn_sale_price_per_thousand_with_printing" />
+                        <field name="max_usd_sale_price_per_thousand_with_printing" />
+                        <field name="required_initial_volume" />
+                        <field name="business_value" />
                       </group>
 
                       <group col="2">
                         <field name="min_percentage_raw_material_on_sale_price" />
+                        <field name="min_sale_price_per_thousand_without_printing" />
+                        <field name="min_mxn_sale_price_per_thousand_with_printing" />
+                        <field name="min_usd_sale_price_per_thousand_with_printing" />
                       </group>
 
                     </group>
 
                     <!-- Hidden Fields -->
-                    <field name="raw_material_product_length_mm" invisible="1"/>
-                    <field name="raw_material_product_length_cm" invisible="1"/>
-                    <field name="coil_width_cm" invisible="1"/>
+                    <field name="raw_material_product_length_mm" invisible="1" />
+                    <field name="raw_material_product_length_cm" invisible="1" />
+                    <field name="raw_material_product_thickness_cm" invisible="1" />
+                    <field name="coil_width_cm" invisible="1" />
+                    <field name="coil_weight_kg" invisible="1" />
+                    <field name="total_cost_coil" invisible="1" />
+                    <field name="cost_per_thousand" invisible="1" />
 
                     <footer>
                         <button

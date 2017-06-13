@@ -64,6 +64,41 @@ class SaleQuotationGenerator(models.TransientModel):
         'Max percentage')
     min_percentage_raw_material_on_sale_price = fields.Float(
         'Min percentage')
+    coil_weight_kg = fields.Float(
+        'Coil Weight (kg)', compute='_compute_coil_weight_kg')
+    total_cost_coil = fields.Float(
+        'Total Cost of the Coil', compute='_compute_total_cost_coil'
+    )
+    cost_per_thousand = fields.Float(
+        'Cost per thousand', compute='_compute_cost_per_thousand'
+    )
+    max_sale_price_per_thousand_without_printing = fields.Float(
+        'Maximum Sale Price per Thousand Without Printing',
+        compute='_compute_sale_price_per_thousand_without_printing'
+    )
+    min_sale_price_per_thousand_without_printing = fields.Float(
+        'Minimum Sale Price per Thousand Without Printing',
+        compute='_compute_sale_price_per_thousand_without_printing'
+    )
+    max_mxn_sale_price_per_thousand_with_printing = fields.Float(
+        'Maximum Sale Price (MXN) per Thousand With Printing',
+        compute='_compute_mxn_sale_price_per_thousand_with_printing'
+    )
+    min_mxn_sale_price_per_thousand_with_printing = fields.Float(
+        'Minimum Sale Price (MXN) per Thousand With Printing',
+        compute='_compute_mxn_sale_price_per_thousand_with_printing'
+    )
+    max_usd_sale_price_per_thousand_with_printing = fields.Float(
+        'Maximum Sale Price (USD) per Thousand With Printing',
+        compute='_compute_usd_sale_price_per_thousand_with_printing'
+    )
+    min_usd_sale_price_per_thousand_with_printing = fields.Float(
+        'Minimum Sale Price (USD) per Thousand With Printing',
+        compute='_compute_usd_sale_price_per_thousand_with_printing'
+    )
+    required_initial_volume = fields.Integer('Required initial volume')
+    business_value = fields.Float(
+        'Business Value', compute='_compute_business_value')
 
     @api.depends('raw_material_product_id')
     def _compute_length_mm(self):
@@ -187,3 +222,153 @@ class SaleQuotationGenerator(models.TransientModel):
             record.coil_width_cm = False
             if record.coil_width_mm:
                 record.coil_width_cm = record.coil_width_mm * 0.1
+
+    @api.depends(
+        'raw_material_product_id',
+        'coil_width_cm',
+        'raw_material_product_thickness_cm',
+        'raw_material_product_length_cm')
+    def _compute_coil_weight_kg(self):
+        """Compute value of field coil_weight_kg."""
+
+        for rec in self:
+            rec.coil_weight_kg = False
+
+            if rec.raw_material_product_id:
+                attr_density = self.env.ref(
+                    'pky_sale_quotation_generator.product_attribute_density')
+                product_has_attr_density = [attr.name for attr in
+                    rec.raw_material_product_id.attribute_value_ids
+                    if attr.attribute_id == attr_density]
+
+                if product_has_attr_density:
+                    if rec.coil_width_cm and \
+                        rec.raw_material_product_thickness_cm and \
+                        rec.raw_material_product_length_cm:
+
+                        rec.coil_weight_kg = \
+                            (
+                                float(product_has_attr_density[0]) *
+                                rec.coil_width_cm *
+                                rec.raw_material_product_thickness_cm *
+                                rec.raw_material_product_length_cm
+                            ) / 1000
+
+    @api.depends('raw_material_product_standard_price', 'coil_weight_kg')
+    def _compute_total_cost_coil(self):
+        """Compute value of field total_cost_coil."""
+
+        for rec in self:
+            rec.total_cost_coil = False
+
+            if rec.raw_material_product_standard_price and rec.coil_weight_kg:
+                rec.total_cost_coil = \
+                    rec.coil_weight_kg * rec.raw_material_product_standard_price
+
+    @api.depends('total_cost_coil', 'total_thousands_new_product')
+    def _compute_cost_per_thousand(self):
+        """Compute value of field cost_per_thousand"""
+
+        for rec in self:
+            rec.cost_per_thousand = False
+
+            if rec.total_cost_coil and rec.total_thousands_new_product:
+                rec.cost_per_thousand = rec.total_cost_coil / \
+                    rec.total_thousands_new_product
+
+    @api.depends(
+        'max_percentage_raw_material_on_sale_price',
+        'min_percentage_raw_material_on_sale_price',
+        'cost_per_thousand')
+    def _compute_sale_price_per_thousand_without_printing(self):
+        """Compute value of fields max_sale_price_per_thousand_without_printing
+        and min_sale_price_per_thousand_without_printing."""
+
+        for rec in self:
+            rec.max_sale_price_per_thousand_without_printing = False
+            rec.min_sale_price_per_thousand_without_printing = False
+
+            if rec.max_percentage_raw_material_on_sale_price:
+                rec.max_sale_price_per_thousand_without_printing = \
+                    rec.cost_per_thousand / float('0.{0}'.format(
+                        int(round(rec.max_percentage_raw_material_on_sale_price))
+                    ))
+
+            if rec.min_percentage_raw_material_on_sale_price:
+                rec.min_sale_price_per_thousand_without_printing = \
+                    rec.cost_per_thousand / float('0.{0}'.format(
+                        int(round(rec.min_percentage_raw_material_on_sale_price))
+                    ))
+
+    @api.depends(
+        'max_sale_price_per_thousand_without_printing',
+        'min_sale_price_per_thousand_without_printing',
+        'current_rate_usd',
+        'total_ink_cost',
+        'total_thousands_new_product',
+        'glue_other_expenses')
+    def _compute_mxn_sale_price_per_thousand_with_printing(self):
+        """Compute value of fields max_mxn_sale_price_per_thousand_with_printing
+        and min_mxn_sale_price_per_thousand_with_printing."""
+
+        for rec in self:
+            rec.max_mxn_sale_price_per_thousand_with_printing = False
+            rec.min_mxn_sale_price_per_thousand_with_printing = False
+
+            if rec.max_sale_price_per_thousand_without_printing:
+                if rec.current_rate_usd and rec.total_ink_cost and \
+                    rec.total_thousands_new_product and rec.glue_other_expenses:
+                    rec.max_mxn_sale_price_per_thousand_with_printing = \
+                        (rec.max_sale_price_per_thousand_without_printing *
+                        rec.current_rate_usd) + (rec.total_ink_cost /
+                        rec.total_thousands_new_product) + (
+                        rec.glue_other_expenses /
+                        rec.total_thousands_new_product)
+
+            if rec.min_sale_price_per_thousand_without_printing:
+                if rec.current_rate_usd and rec.total_ink_cost and \
+                    rec.total_thousands_new_product and rec.glue_other_expenses:
+                    rec.min_mxn_sale_price_per_thousand_with_printing = \
+                        (rec.min_sale_price_per_thousand_without_printing *
+                        rec.current_rate_usd) + (rec.total_ink_cost /
+                        rec.total_thousands_new_product) + (
+                        rec.glue_other_expenses /
+                        rec.total_thousands_new_product)
+
+    @api.depends(
+        'max_mxn_sale_price_per_thousand_with_printing',
+        'min_mxn_sale_price_per_thousand_with_printing',
+        'current_rate_usd')
+    def _compute_usd_sale_price_per_thousand_with_printing(self):
+        """Compute value of fields max_usd_sale_price_per_thousand_with_printing
+        and min_usd_sale_price_per_thousand_with_printing."""
+
+        for rec in self:
+            rec.max_usd_sale_price_per_thousand_with_printing = False
+            rec.min_usd_sale_price_per_thousand_with_printing = False
+
+            if rec.max_mxn_sale_price_per_thousand_with_printing and \
+                rec.current_rate_usd:
+                rec.max_usd_sale_price_per_thousand_with_printing = \
+                    rec.max_mxn_sale_price_per_thousand_with_printing / \
+                        rec.current_rate_usd
+
+            if rec.min_mxn_sale_price_per_thousand_with_printing and \
+                rec.current_rate_usd:
+                rec.min_usd_sale_price_per_thousand_with_printing = \
+                    rec.min_mxn_sale_price_per_thousand_with_printing / \
+                        rec.current_rate_usd
+
+    @api.depends(
+        'required_initial_volume',
+        'min_mxn_sale_price_per_thousand_with_printing')
+    def _compute_business_value(self):
+        """Compute value of field business_value."""
+
+        for rec in self:
+            rec.business_value = False
+
+            if rec.required_initial_volume and \
+                rec.min_mxn_sale_price_per_thousand_with_printing:
+                rec.business_value = rec.required_initial_volume * \
+                    rec.min_mxn_sale_price_per_thousand_with_printing
