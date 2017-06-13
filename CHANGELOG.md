@@ -13,3 +13,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add new field "computed current_rate_usd" to show the current rate of currency USD in the wizard.
 - Add new fields that allow capture data about the inks to use to produce the new product to quote.
 - Add new field "Glue and Other Spenses".
+- Add new fields and calculations. The wizard allows to capture all the necessary information and make the corresponding calculations to generate the quotes.
