@@ -1,9 +1,28 @@
 # -*- coding: utf-8 -*-
+###############################################################################
+#
+#    Odoo, Open Source Management Solution
+#    Copyright (C) 2017 Humanytek (<www.humanytek.com>).
+#    Manuel Márquez <manuel@humanytek.com>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+###############################################################################
 
 from openerp import api, fields, models
-from openerp.tools.translate import _
-import logging
-_logger = logging.getLogger(__name__)
+
+
 class SaleQuotationGenerator(models.TransientModel):
     """
     This wizard will generate quotations based on parameters asociated to the
@@ -103,8 +122,8 @@ class SaleQuotationGenerator(models.TransientModel):
     @api.depends('raw_material_product_id')
     def _compute_length_mm(self):
         """Compute value of field raw_material_product_length_mm, the value is
-        the result of process of the attribute length of the product converting it from
-        meters to millimeters."""
+        the result of process of the attribute length of the product converting
+        it from meters to millimeters."""
 
         for rec in self:
             rec.raw_material_product_length_mm = False
@@ -112,9 +131,10 @@ class SaleQuotationGenerator(models.TransientModel):
             if rec.raw_material_product_id:
                 attr_length_object = self.env.ref(
                     'pky_sale_quotation_generator.product_attribute_length')
-                product_has_attr_length = [attr.name for attr in
-                    rec.raw_material_product_id.attribute_value_ids
-                    if attr.attribute_id == attr_length_object]
+                product_has_attr_length = [
+                    attr.name for attr in
+                    rec.raw_material_product_id.attribute_value_ids if
+                    attr.attribute_id == attr_length_object]
 
                 if product_has_attr_length:
                     rec.raw_material_product_length_mm = \
@@ -144,7 +164,8 @@ class SaleQuotationGenerator(models.TransientModel):
             if rec.raw_material_product_id:
                 attr_thickness_object = self.env.ref(
                     'pky_sale_quotation_generator.product_attribute_thickness')
-                product_has_attr_thickness = [attr.name for attr in
+                product_has_attr_thickness = [
+                    attr.name for attr in
                     rec.raw_material_product_id.attribute_value_ids
                     if attr.attribute_id == attr_thickness_object]
                 if product_has_attr_thickness:
@@ -187,8 +208,10 @@ class SaleQuotationGenerator(models.TransientModel):
 
         for record in self:
             record.total_ink_cost = False
-            if record.ink_product_standard_price and \
-                record.ink_product_quantity and record.current_rate_usd:
+            if (record.ink_product_standard_price and
+                    record.ink_product_quantity and
+                    record.current_rate_usd):
+
                 if record.ink_product_cost_currency_id:
                     usd_currency = self.env.ref('base.USD')
                     mxn_currency = self.env.ref('base.MXN')
@@ -202,7 +225,8 @@ class SaleQuotationGenerator(models.TransientModel):
                             record.ink_product_standard_price * \
                             record.ink_product_quantity
                 else:
-                    record.total_ink_cost = record.ink_product_standard_price * \
+                    record.total_ink_cost = \
+                        record.ink_product_standard_price * \
                         record.ink_product_quantity
 
     @api.depends('flat_width_mm', 'overlapping')
@@ -212,7 +236,8 @@ class SaleQuotationGenerator(models.TransientModel):
         for record in self:
             record.coil_width_mm = False
             if record.flat_width_mm and record.overlapping:
-                record.coil_width_mm = record.flat_width_mm * 2 + record.overlapping
+                record.coil_width_mm = \
+                    record.flat_width_mm * 2 + record.overlapping
 
     @api.depends('coil_width_mm')
     def _compute_coil_width_cm(self):
@@ -237,14 +262,15 @@ class SaleQuotationGenerator(models.TransientModel):
             if rec.raw_material_product_id:
                 attr_density = self.env.ref(
                     'pky_sale_quotation_generator.product_attribute_density')
-                product_has_attr_density = [attr.name for attr in
+                product_has_attr_density = [
+                    attr.name for attr in
                     rec.raw_material_product_id.attribute_value_ids
                     if attr.attribute_id == attr_density]
 
                 if product_has_attr_density:
-                    if rec.coil_width_cm and \
-                        rec.raw_material_product_thickness_cm and \
-                        rec.raw_material_product_length_cm:
+                    if (rec.coil_width_cm and
+                            rec.raw_material_product_thickness_cm and
+                            rec.raw_material_product_length_cm):
 
                         rec.coil_weight_kg = \
                             (
@@ -263,7 +289,8 @@ class SaleQuotationGenerator(models.TransientModel):
 
             if rec.raw_material_product_standard_price and rec.coil_weight_kg:
                 rec.total_cost_coil = \
-                    rec.coil_weight_kg * rec.raw_material_product_standard_price
+                    rec.coil_weight_kg * \
+                    rec.raw_material_product_standard_price
 
     @api.depends('total_cost_coil', 'total_thousands_new_product')
     def _compute_cost_per_thousand(self):
@@ -290,14 +317,19 @@ class SaleQuotationGenerator(models.TransientModel):
 
             if rec.max_percentage_raw_material_on_sale_price:
                 rec.max_sale_price_per_thousand_without_printing = \
-                    rec.cost_per_thousand / float('0.{0}'.format(
-                        int(round(rec.max_percentage_raw_material_on_sale_price))
+                    rec.cost_per_thousand / \
+                    float('0.{0}'.format(
+                        int(round(
+                            rec.max_percentage_raw_material_on_sale_price
+                            ))
                     ))
 
             if rec.min_percentage_raw_material_on_sale_price:
                 rec.min_sale_price_per_thousand_without_printing = \
                     rec.cost_per_thousand / float('0.{0}'.format(
-                        int(round(rec.min_percentage_raw_material_on_sale_price))
+                        int(round(
+                            rec.min_percentage_raw_material_on_sale_price
+                            ))
                     ))
 
     @api.depends(
@@ -316,24 +348,30 @@ class SaleQuotationGenerator(models.TransientModel):
             rec.min_mxn_sale_price_per_thousand_with_printing = False
 
             if rec.max_sale_price_per_thousand_without_printing:
-                if rec.current_rate_usd and rec.total_ink_cost and \
-                    rec.total_thousands_new_product and rec.glue_other_expenses:
+                if (rec.current_rate_usd and rec.total_ink_cost and
+                        rec.total_thousands_new_product and
+                        rec.glue_other_expenses):
                     rec.max_mxn_sale_price_per_thousand_with_printing = \
                         (rec.max_sale_price_per_thousand_without_printing *
-                        rec.current_rate_usd) + (rec.total_ink_cost /
-                        rec.total_thousands_new_product) + (
-                        rec.glue_other_expenses /
-                        rec.total_thousands_new_product)
+                            rec.current_rate_usd) + \
+                        (rec.total_ink_cost /
+                            rec.total_thousands_new_product) + \
+                        (rec.glue_other_expenses /
+                            rec.total_thousands_new_product)
 
             if rec.min_sale_price_per_thousand_without_printing:
-                if rec.current_rate_usd and rec.total_ink_cost and \
-                    rec.total_thousands_new_product and rec.glue_other_expenses:
+
+                if (rec.current_rate_usd and rec.total_ink_cost and
+                        rec.total_thousands_new_product and
+                        rec.glue_other_expenses):
+
                     rec.min_mxn_sale_price_per_thousand_with_printing = \
                         (rec.min_sale_price_per_thousand_without_printing *
-                        rec.current_rate_usd) + (rec.total_ink_cost /
-                        rec.total_thousands_new_product) + (
-                        rec.glue_other_expenses /
-                        rec.total_thousands_new_product)
+                            rec.current_rate_usd) + \
+                        (rec.total_ink_cost /
+                            rec.total_thousands_new_product) + \
+                        (rec.glue_other_expenses /
+                            rec.total_thousands_new_product)
 
     @api.depends(
         'max_mxn_sale_price_per_thousand_with_printing',
@@ -347,17 +385,19 @@ class SaleQuotationGenerator(models.TransientModel):
             rec.max_usd_sale_price_per_thousand_with_printing = False
             rec.min_usd_sale_price_per_thousand_with_printing = False
 
-            if rec.max_mxn_sale_price_per_thousand_with_printing and \
-                rec.current_rate_usd:
+            if (rec.max_mxn_sale_price_per_thousand_with_printing and
+                    rec.current_rate_usd):
+
                 rec.max_usd_sale_price_per_thousand_with_printing = \
                     rec.max_mxn_sale_price_per_thousand_with_printing / \
-                        rec.current_rate_usd
+                    rec.current_rate_usd
 
-            if rec.min_mxn_sale_price_per_thousand_with_printing and \
-                rec.current_rate_usd:
+            if (rec.min_mxn_sale_price_per_thousand_with_printing and
+                    rec.current_rate_usd):
+
                 rec.min_usd_sale_price_per_thousand_with_printing = \
                     rec.min_mxn_sale_price_per_thousand_with_printing / \
-                        rec.current_rate_usd
+                    rec.current_rate_usd
 
     @api.depends(
         'required_initial_volume',
@@ -368,7 +408,8 @@ class SaleQuotationGenerator(models.TransientModel):
         for rec in self:
             rec.business_value = False
 
-            if rec.required_initial_volume and \
-                rec.min_mxn_sale_price_per_thousand_with_printing:
+            if (rec.required_initial_volume and
+                    rec.min_mxn_sale_price_per_thousand_with_printing):
+
                 rec.business_value = rec.required_initial_volume * \
                     rec.min_mxn_sale_price_per_thousand_with_printing
