@@ -78,6 +78,18 @@
 
                     </group>
 
+                    <separator string="Range of Prices per Thousand" />
+                    <field name="price_range_per_thousand_ids">
+                        <tree editable="bottom">
+                            <field name="lower_limit" />
+                            <field name="upper_limit" />
+                            <field name="percentage_raw_material_on_sale_price" />
+                            <field name="sale_price_per_thousand_without_printing" />
+                            <field name="sale_price_per_thousand_mxn" />
+                            <field name="sale_price_per_thousand_usd" />
+                        </tree>
+                    </field>
+
                     <!-- Hidden Fields -->
                     <field name="raw_material_product_length_mm" invisible="1" />
                     <field name="raw_material_product_length_cm" invisible="1" />
@@ -110,7 +122,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">form</field>
             <field name="view_id" ref="sale_quotation_generator_form_view"/>
-            <field name="target">new</field>
+            <field name="target">current</field>
         </record>
 
         <menuitem
