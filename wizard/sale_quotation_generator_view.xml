@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <form string="Quotations Generator">
 
+                    <separator string="Quotations Generator" />
                     <p class="oe_grey">
                       This wizard will generate quotations based on parameters asociated to the
                       operations of pack system.
