@@ -14,3 +14,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add new fields that allow capture data about the inks to use to produce the new product to quote.
 - Add new field "Glue and Other Spenses".
 - Add new fields and calculations. The wizard allows to capture all the necessary information and make the corresponding calculations to generate the quotes.
+- Add field "Range of Prices to Quote" to model of wizard. This field allows show a table (tree) in wizard to register the range of prices per thousand to send to quote.
