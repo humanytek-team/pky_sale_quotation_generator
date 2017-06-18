@@ -76,26 +76,35 @@ class PriceRangePerThousand(models.TransientModel):
         for rec in self:
             rec.sale_price_per_thousand_mxn = False
 
-            if rec.sale_price_per_thousand_without_printing:
-                if (rec.sale_quotation_generator_id.current_rate_usd and
-                        rec.sale_quotation_generator_id.total_ink_cost and
-                        rec
-                        .sale_quotation_generator_id
-                        .total_thousands_new_product
-                        and
-                        rec.sale_quotation_generator_id.glue_other_expenses):
+            if (rec.sale_price_per_thousand_without_printing and
+                    rec.sale_quotation_generator_id.current_rate_usd):
 
                     rec.sale_price_per_thousand_mxn = \
-                        (rec.sale_price_per_thousand_without_printing *
-                            rec.sale_quotation_generator_id.current_rate_usd) \
-                        + (rec.sale_quotation_generator_id.total_ink_cost /
-                            rec
-                            .sale_quotation_generator_id
-                            .total_thousands_new_product) \
-                        + (rec.sale_quotation_generator_id.glue_other_expenses
-                            / rec
-                            .sale_quotation_generator_id
-                            .total_thousands_new_product)
+                        rec.sale_price_per_thousand_without_printing * \
+                        rec.sale_quotation_generator_id.current_rate_usd
+
+                    if rec. \
+                        sale_quotation_generator_id. \
+                            total_thousands_new_product:
+
+                        if rec.sale_quotation_generator_id.total_ink_cost:
+                            rec. \
+                                sale_price_per_thousand_mxn \
+                                += rec. \
+                                sale_quotation_generator_id.total_ink_cost / \
+                                rec. \
+                                sale_quotation_generator_id. \
+                                total_thousands_new_product
+
+                        if rec.sale_quotation_generator_id.glue_other_expenses:
+                            rec. \
+                                sale_price_per_thousand_mxn \
+                                += rec. \
+                                sale_quotation_generator_id. \
+                                glue_other_expenses / \
+                                rec. \
+                                sale_quotation_generator_id. \
+                                total_thousands_new_product
 
     @api.depends(
         'sale_quotation_generator_id',

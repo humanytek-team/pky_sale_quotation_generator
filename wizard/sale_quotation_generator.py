@@ -36,10 +36,13 @@ class SaleQuotationGenerator(models.TransientModel):
     raw_material_product_id = fields.Many2one(
         'product.product', 'Material', required=True)
     raw_material_product_standard_price = fields.Float(
-        related='raw_material_product_id.standard_price'
+        related='raw_material_product_id.standard_price',
+        readonly=True,
+        required=True
     )
     raw_material_product_cost_currency_id = fields.Many2one(
-        related='raw_material_product_id.cost_currency_id'
+        related='raw_material_product_id.cost_currency_id',
+        readonly=True
     )
     raw_material_product_seller_ids = fields.One2many(
         related='raw_material_product_id.seller_ids'
@@ -73,8 +76,8 @@ class SaleQuotationGenerator(models.TransientModel):
     total_ink_cost = fields.Float(
         'Total ink cost', compute='_compute_total_ink_cost')
     glue_other_expenses = fields.Float('Glue and Other Expenses')
-    flat_width_mm = fields.Float('Flat Width (mm)')
-    overlapping = fields.Float('Overlapping')
+    flat_width_mm = fields.Float('Flat Width (mm)', required=True)
+    overlapping = fields.Float('Overlapping', required=True)
     coil_width_mm = fields.Float(
         'Coil Width (mm)', compute='_compute_coil_width_mm')
     coil_width_cm = fields.Float(
@@ -352,32 +355,47 @@ class SaleQuotationGenerator(models.TransientModel):
             rec.max_mxn_sale_price_per_thousand_with_printing = False
             rec.min_mxn_sale_price_per_thousand_with_printing = False
 
-            if rec.max_sale_price_per_thousand_without_printing:
-                if (rec.current_rate_usd and rec.total_ink_cost and
-                        rec.total_thousands_new_product and
-                        rec.glue_other_expenses):
+            if (rec.max_sale_price_per_thousand_without_printing and
+                    rec.current_rate_usd):
 
                     rec.max_mxn_sale_price_per_thousand_with_printing = \
-                        (rec.max_sale_price_per_thousand_without_printing *
-                            rec.current_rate_usd) + \
-                        (rec.total_ink_cost /
-                            rec.total_thousands_new_product) + \
-                        (rec.glue_other_expenses /
-                            rec.total_thousands_new_product)
+                        rec.max_sale_price_per_thousand_without_printing * \
+                        rec.current_rate_usd
 
-            if rec.min_sale_price_per_thousand_without_printing:
+                    if rec.total_thousands_new_product:
 
-                if (rec.current_rate_usd and rec.total_ink_cost and
-                        rec.total_thousands_new_product and
-                        rec.glue_other_expenses):
+                        if rec.total_ink_cost:
+                            rec. \
+                                max_mxn_sale_price_per_thousand_with_printing \
+                                += rec.total_ink_cost / \
+                                rec.total_thousands_new_product
+
+                        if rec.glue_other_expenses:
+                            rec. \
+                                max_mxn_sale_price_per_thousand_with_printing \
+                                += rec.glue_other_expenses / \
+                                rec.total_thousands_new_product
+
+            if (rec.min_sale_price_per_thousand_without_printing and
+                    rec.current_rate_usd):
 
                     rec.min_mxn_sale_price_per_thousand_with_printing = \
-                        (rec.min_sale_price_per_thousand_without_printing *
-                            rec.current_rate_usd) + \
-                        (rec.total_ink_cost /
-                            rec.total_thousands_new_product) + \
-                        (rec.glue_other_expenses /
-                            rec.total_thousands_new_product)
+                        rec.min_sale_price_per_thousand_without_printing * \
+                        rec.current_rate_usd
+
+                    if rec.total_thousands_new_product:
+
+                        if rec.total_ink_cost:
+                            rec. \
+                                min_mxn_sale_price_per_thousand_with_printing \
+                                += rec.total_ink_cost / \
+                                rec.total_thousands_new_product
+
+                        if rec.glue_other_expenses:
+                            rec. \
+                                min_mxn_sale_price_per_thousand_with_printing \
+                                += rec.glue_other_expenses / \
+                                rec.total_thousands_new_product
 
     @api.depends(
         'max_mxn_sale_price_per_thousand_with_printing',
