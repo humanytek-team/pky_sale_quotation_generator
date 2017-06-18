@@ -118,6 +118,11 @@ class SaleQuotationGenerator(models.TransientModel):
     required_initial_volume = fields.Integer('Required initial volume')
     business_value = fields.Float(
         'Business Value', compute='_compute_business_value')
+    price_range_per_thousand_ids = fields.One2many(
+        comodel_name='price.range.per.thousand',
+        inverse_name='sale_quotation_generator_id',
+        string='Range of prices per thousand'
+    )
 
     @api.depends('raw_material_product_id')
     def _compute_length_mm(self):
@@ -351,6 +356,7 @@ class SaleQuotationGenerator(models.TransientModel):
                 if (rec.current_rate_usd and rec.total_ink_cost and
                         rec.total_thousands_new_product and
                         rec.glue_other_expenses):
+
                     rec.max_mxn_sale_price_per_thousand_with_printing = \
                         (rec.max_sale_price_per_thousand_without_printing *
                             rec.current_rate_usd) + \

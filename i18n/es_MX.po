@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-13 23:07+0000\n"
-"PO-Revision-Date: 2017-06-13 19:33-0400\n"
+"POT-Creation-Date: 2017-06-18 00:40+0000\n"
+"PO-Revision-Date: 2017-06-17 20:46-0400\n"
 "Last-Translator: Manuel Marquez <buzondemam@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -114,11 +114,13 @@ msgid ""
 msgstr "t"
 
 #. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,create_uid:0
 #: field:sale.quotation.generator,create_uid:0
 msgid "Created by"
 msgstr "Created by"
 
 #. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,create_date:0
 #: field:sale.quotation.generator,create_date:0
 msgid "Created on"
 msgstr "Created on"
@@ -151,6 +153,7 @@ msgid "Density"
 msgstr "Densidad"
 
 #. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,display_name:0
 #: field:sale.quotation.generator,display_name:0
 msgid "Display Name"
 msgstr "Display Name"
@@ -176,7 +179,7 @@ msgid "Glue and Other Expenses"
 msgstr "Pegamento y Otros Gastos"
 
 #. module: pky_sale_quotation_generator
-#: field:sale.quotation.generator,id:0
+#: field:price.range.per.thousand,id:0 field:sale.quotation.generator,id:0
 msgid "ID"
 msgstr "ID"
 
@@ -202,16 +205,19 @@ msgid "Inks"
 msgstr "Tintas"
 
 #. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,__last_update:0
 #: field:sale.quotation.generator,__last_update:0
 msgid "Last Modified on"
 msgstr "Last Modified on"
 
 #. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,write_uid:0
 #: field:sale.quotation.generator,write_uid:0
 msgid "Last Updated by"
 msgstr "Last Updated by"
 
 #. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,write_date:0
 #: field:sale.quotation.generator,write_date:0
 msgid "Last Updated on"
 msgstr "Last Updated on"
@@ -219,7 +225,12 @@ msgstr "Last Updated on"
 #. module: pky_sale_quotation_generator
 #: model:product.attribute,name:pky_sale_quotation_generator.product_attribute_length
 msgid "Length (m)"
-msgstr "Longitud (m)"
+msgstr "Length (m)"
+
+#. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,lower_limit:0
+msgid "Lower Limit"
+msgstr "Límite Inferior"
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
@@ -323,6 +334,11 @@ msgid "Para 3 Tintas o menos"
 msgstr "Para 3 Tintas o menos"
 
 #. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,percentage_raw_material_on_sale_price:0
+msgid "Percentage of Raw Material"
+msgstr "Porcentaje "
+
+#. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Product to quote"
 msgstr "Producto a Cotizar"
@@ -333,6 +349,16 @@ msgstr "Producto a Cotizar"
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Quotations Generator"
 msgstr "Generador de Cotizaciones"
+
+#. module: pky_sale_quotation_generator
+#: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
+msgid "Range of Prices per Thousand"
+msgstr "Rango de Precios a Cotizar"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,price_range_per_thousand_ids:0
+msgid "Range of prices per thousand"
+msgstr "Rango de Precios a Cotizar"
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,raw_material_product_length_cm:0
@@ -358,6 +384,26 @@ msgstr "Volumen Inicial Requerido"
 #: model:product.template,description:pky_sale_quotation_generator.product_pvc_e_product_template
 msgid "SOPLADO"
 msgstr "SOPLADO"
+
+#. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,sale_price_per_thousand_mxn:0
+msgid "Sale Price Per Thousand (MXN)"
+msgstr "Precio de Venta por Millar (MXN)"
+
+#. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,sale_price_per_thousand_usd:0
+msgid "Sale Price Per Thousand (USD)"
+msgstr "Precio de Venta por Millar (USD)"
+
+#. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,sale_price_per_thousand_without_printing:0
+msgid "Sale Price Per Thousand Without Printing"
+msgstr "Precio de Venta por Millar sin Impresión"
+
+#. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,sale_quotation_generator_id:0
+msgid "Sale Quotation Generator (Wizard)"
+msgstr "Generador de Cotizaciones (Asistente)"
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
@@ -389,8 +435,8 @@ msgid ""
 "This wizard will generate quotations based on parameters asociated to the\n"
 "                      operations of pack system."
 msgstr ""
-"Este asistente le permite generar cotizaciones basado en las operaciones de "
-"la compañía"
+"This wizard will generate quotations based on parameters asociated to the\n"
+"                      operations of pack system."
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,total_thousands_new_product:0
@@ -406,6 +452,11 @@ msgstr "Costo Total de la Bobina"
 #: field:sale.quotation.generator,total_ink_cost:0
 msgid "Total ink cost"
 msgstr "Costo Total "
+
+#. module: pky_sale_quotation_generator
+#: field:price.range.per.thousand,upper_limit:0
+msgid "Upper Limit"
+msgstr "Límite Superior"
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
