@@ -64,8 +64,7 @@ class SaleQuotationGenerator(models.TransientModel):
         'Thousands', compute='_compute_total_thousands')
     cut_based_on_bottle = fields.Float('Cut (mm)', required=True)
     current_rate_usd = fields.Float(compute='_compute_current_rate_usd')
-    ink_product_id = fields.Many2one(
-        'product.product', 'Ink', required=True)
+    ink_product_id = fields.Many2one('product.product', 'Ink')
     ink_product_standard_price = fields.Float(
         related='ink_product_id.standard_price'
     )
@@ -124,8 +123,14 @@ class SaleQuotationGenerator(models.TransientModel):
     price_range_per_thousand_ids = fields.One2many(
         comodel_name='price.range.per.thousand',
         inverse_name='sale_quotation_generator_id',
-        string='Range of prices per thousand'
+        string='Range of prices per thousand',
+        required=True
     )
+    customer_id = fields.Many2one(
+        'res.partner',
+        'Customer',
+        required=True,
+        domain=[('customer', '=', True)])
 
     @api.depends('raw_material_product_id')
     def _compute_length_mm(self):
@@ -437,3 +442,72 @@ class SaleQuotationGenerator(models.TransientModel):
 
                 rec.business_value = rec.required_initial_volume * \
                     rec.min_mxn_sale_price_per_thousand_with_printing
+
+    @api.one
+    def generate_quotations(self):
+        """Generates quotations of the data obtained from the form of the
+        wizard"""
+
+        SaleOrder = self.env['sale.order']
+        sale_order_data = dict()
+        Product = self.env['product.product']
+        product_data = dict()
+        product_data['name'] = self.new_product_generated
+
+        product_uom_thousand = self.env.ref(
+            'pky_sale_quotation_generator.product_uom_thousand')
+        if product_uom_thousand:
+            product_data['uom_id'] = product_uom_thousand.id
+
+        product_data['sale_ok'] = True
+        product_data['purchase_ok'] = False
+
+        route_warehouse_manufacture = self.env.ref(
+            'mrp.route_warehouse0_manufacture')
+        route_warehouse_mto = self.env.ref(
+            'stock.route_warehouse0_mto')
+
+        if route_warehouse_manufacture or route_warehouse_mto:
+            product_data['route_ids'] = []
+
+        if route_warehouse_manufacture:
+            product_data['route_ids'].append(
+                (4, route_warehouse_manufacture.id)
+            )
+
+        if route_warehouse_mto:
+            product_data['route_ids'].append(
+                (4, route_warehouse_mto.id)
+            )
+
+        product = Product.create(product_data)
+
+        sale_order_data['partner_id'] = self.customer_id.id
+        if self.price_range_per_thousand_ids:
+            sale_order_data['order_line'] = list()
+            for prices_range in self.price_range_per_thousand_ids:
+                sale_order_data['order_line'].append(
+                    (0, 0, {
+                        'product_id': product.id,
+                        'price_unit': prices_range.sale_price_per_thousand_usd
+                    })
+                )
+
+        sale_order = SaleOrder.create(sale_order_data)
+        if sale_order:
+            view = self.env.ref('sale.view_order_form')
+
+            sale_order_form_view = {
+                'name': 'Enter transfer details',
+                'type': 'ir.actions.act_window',
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_model': 'sale.order',
+                'views': [(view.id, 'form')],
+                'view_id': view.id,
+                'target': 'current',
+                'res_id': sale_order.id,
+                'context': self.env.context,
+            }
+
+            return sale_order_form_view

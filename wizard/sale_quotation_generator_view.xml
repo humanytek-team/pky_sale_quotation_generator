@@ -53,6 +53,7 @@
                         <newline />
                         <field name="new_product_generated" />
                         <field name="total_thousands_new_product" />
+                        <field name="customer_id" />
                       </group>
 
                     </group>

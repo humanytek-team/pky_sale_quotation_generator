@@ -16,3 +16,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add new fields and calculations. The wizard allows to capture all the necessary information and make the corresponding calculations to generate the quotes.
 - Add field "Range of Prices to Quote" to model of wizard. This field allows show a table (tree) in wizard to register the range of prices per thousand to send to quote.
 - Computation of sale price works correctly also if the user does not indicate costs of inks, glue ant other expenses.
+- Add field customer to wizard and method generate_quotations to process the data of the wizard and generate the quotation in the system.
