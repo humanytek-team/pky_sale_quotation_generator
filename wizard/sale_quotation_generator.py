@@ -511,6 +511,10 @@ class SaleQuotationGenerator(models.TransientModel):
                 (4, route_warehouse_mto.id)
             )
 
+        usd_currency = self.env.ref('base.USD')
+        if usd_currency:
+            product_data['currency_id'] = usd_currency.id
+
         product = Product.create(product_data)
 
         sale_order_data['partner_id'] = self.customer_id.id
