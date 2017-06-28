@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-18 01:13+0000\n"
-"PO-Revision-Date: 2017-06-17 21:15-0400\n"
+"POT-Creation-Date: 2017-06-28 14:18+0000\n"
+"PO-Revision-Date: 2017-06-28 10:20-0400\n"
 "Last-Translator: Manuel Marquez <buzondemam@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -141,6 +141,11 @@ msgstr "Moneda del precio de coste del producto"
 #: field:sale.quotation.generator,current_rate_usd:0
 msgid "Current rate usd"
 msgstr "Tipo de Cambio Actual USD"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,customer_id:0
+msgid "Customer"
+msgstr "Customer"
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,cut_based_on_bottle:0
@@ -348,7 +353,7 @@ msgstr "Producto a Cotizar"
 #: model:ir.ui.menu,name:pky_sale_quotation_generator.menu_action_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Quotations Generator"
-msgstr "Cotizador"
+msgstr "Generador de Cotizaciones"
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
@@ -411,6 +416,16 @@ msgid "Sellers"
 msgstr "Proveedor"
 
 #. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,shrinkage_percentage:0
+msgid "Shrinkage Percentage"
+msgstr "Porcentaje de Merma"
+
+#. module: pky_sale_quotation_generator
+#: field:sale.quotation.generator,shrinkage_percentage_to_computation_total_thousands:0
+msgid "Shrinkage Percentage to Computation of Total Thousands"
+msgstr "Porcentaje de merma preparado para el calculo de total de millares"
+
+#. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,raw_material_product_seller_ids:0
 msgid "Supplier"
 msgstr "Proveedor"
@@ -437,6 +452,11 @@ msgid ""
 msgstr ""
 "This wizard will generate quotations based on parameters asociated to the\n"
 "                      operations of pack system."
+
+#. module: pky_sale_quotation_generator
+#: model:product.uom,name:pky_sale_quotation_generator.product_uom_thousand
+msgid "Thousand"
+msgstr "Thousand"
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,total_thousands_new_product:0

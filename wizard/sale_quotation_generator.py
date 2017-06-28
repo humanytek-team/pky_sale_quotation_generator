@@ -131,6 +131,12 @@ class SaleQuotationGenerator(models.TransientModel):
         'Customer',
         required=True,
         domain=[('customer', '=', True)])
+    shrinkage_percentage = fields.Float(
+        'Shrinkage Percentage', required=True)
+    shrinkage_percentage_to_computation_total_thousands = fields.Float(
+        'Shrinkage Percentage to Computation of Total Thousands',
+        compute='_compute_shrinkage_percentage_total_thousands'
+    )
 
     @api.depends('raw_material_product_id')
     def _compute_length_mm(self):
@@ -185,7 +191,10 @@ class SaleQuotationGenerator(models.TransientModel):
                     rec.raw_material_product_thickness_cm = \
                         float(product_has_attr_thickness[0]) / 10000
 
-    @api.depends('raw_material_product_length_mm', 'cut_based_on_bottle')
+    @api.depends(
+        'raw_material_product_length_mm',
+        'cut_based_on_bottle',
+        'shrinkage_percentage_to_computation_total_thousands')
     def _compute_total_thousands(self):
         """Compute value of field total_thousands_new_product, the value will be
         the total thousands of the new product in the quotation to generate."""
@@ -193,11 +202,15 @@ class SaleQuotationGenerator(models.TransientModel):
         for rec in self:
             rec.total_thousands_new_product = False
 
-            if rec.raw_material_product_length_mm and rec.cut_based_on_bottle:
+            if (rec.raw_material_product_length_mm
+                    and rec.cut_based_on_bottle
+                    and
+                    rec.shrinkage_percentage_to_computation_total_thousands):
                 rec.total_thousands_new_product = (
                     rec.raw_material_product_length_mm / (
                         rec.cut_based_on_bottle * 1000
-                    )) * 0.9
+                    )) * \
+                    rec.shrinkage_percentage_to_computation_total_thousands
 
     @api.depends('raw_material_product_id')
     def _compute_current_rate_usd(self):
@@ -442,6 +455,24 @@ class SaleQuotationGenerator(models.TransientModel):
 
                 rec.business_value = rec.required_initial_volume * \
                     rec.min_mxn_sale_price_per_thousand_with_printing
+
+    @api.depends('shrinkage_percentage')
+    def _compute_shrinkage_percentage_total_thousands(self):
+        """Compute value of field
+        shrinkage_percentage_to_computation_total_thousands."""
+
+        for rec in self:
+            rec.shrinkage_percentage_to_computation_total_thousands = False
+
+            if rec.shrinkage_percentage:
+                shrinkage_percentage_to_total_thousands = 100 - \
+                    rec.shrinkage_percentage
+                rec.shrinkage_percentage_to_computation_total_thousands = \
+                    float('0.{0}'.format(
+                        int(round(
+                            shrinkage_percentage_to_total_thousands
+                            ))
+                    ))
 
     @api.one
     def generate_quotations(self):

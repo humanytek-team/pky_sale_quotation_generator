@@ -40,6 +40,7 @@
                         <field name="flat_width_mm" />
                         <field name="overlapping" />
                         <field name="coil_width_mm" />
+                        <field name="shrinkage_percentage" />
                         <newline />
 
                         <separator string="Inks" />
@@ -100,6 +101,9 @@
                     <field name="coil_weight_kg" invisible="1" />
                     <field name="total_cost_coil" invisible="1" />
                     <field name="cost_per_thousand" invisible="1" />
+                    <field
+                        name="shrinkage_percentage_to_computation_total_thousands"
+                        invisible="1"/>
 
                     <footer>
                         <button
