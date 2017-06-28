@@ -524,7 +524,8 @@ class SaleQuotationGenerator(models.TransientModel):
                 sale_order_data['order_line'].append(
                     (0, 0, {
                         'product_id': product.id,
-                        'price_unit': prices_range.sale_price_per_thousand_usd
+                        'price_unit': prices_range.sale_price_per_thousand_usd,
+                        'name': prices_range.text_range_of_thousand,
                     })
                 )
 

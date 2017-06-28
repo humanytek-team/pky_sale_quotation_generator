@@ -22,6 +22,7 @@
 ###############################################################################
 
 from openerp import api, fields, models
+from openerp.tools.translate import _
 
 
 class PriceRangePerThousand(models.TransientModel):
@@ -45,6 +46,9 @@ class PriceRangePerThousand(models.TransientModel):
         'sale.quotation.generator',
         'Sale Quotation Generator (Wizard)',
         required=True)
+    text_range_of_thousand = fields.Char(
+        'Text of Range of Thousands',
+        compute='_compute_text_range_thousands')
 
     @api.depends(
         'percentage_raw_material_on_sale_price',
@@ -122,3 +126,14 @@ class PriceRangePerThousand(models.TransientModel):
                 rec.sale_price_per_thousand_usd = \
                     rec.sale_price_per_thousand_mxn / \
                     rec.sale_quotation_generator_id.current_rate_usd
+
+    @api.depends('lower_limit', 'upper_limit')
+    def _compute_text_range_thousands(self):
+        """Compute value of field text_range_of_thousand."""
+
+        for rec in self:
+            rec.text_range_of_thousand = False
+
+            if rec.lower_limit and rec.upper_limit:
+                rec.text_range_of_thousand = _('From {0} To {1} Thousands') \
+                    .format(rec.lower_limit, rec.upper_limit)
