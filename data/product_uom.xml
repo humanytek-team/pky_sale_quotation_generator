@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+      <record id="product_uom_thousand" model="product.uom">
+          <field name="name">Thousand</field>
+          <field name="category_id" ref="product.product_uom_categ_unit" />
+          <field name="uom_type">bigger</field>
+      </record>
+
+    </data>
+</openerp>

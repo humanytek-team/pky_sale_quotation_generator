@@ -12,9 +12,10 @@
     'website': "http://www.humanytek.com",
     'category': 'Sales Management',
     'version': '0.1.0',
-    'depends': ['sale', 'purchase_product_cost_currency'],
+    'depends': ['sale', 'mrp', 'purchase_product_cost_currency'],
     'data': [
         'data/product_attribute.xml',
+        'data/product_uom.xml',
         'wizard/sale_quotation_generator_view.xml',
     ],
     'demo': [
