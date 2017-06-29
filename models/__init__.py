@@ -22,3 +22,4 @@
 ###############################################################################
 
 from . import price_range_per_thousand
+from . import product

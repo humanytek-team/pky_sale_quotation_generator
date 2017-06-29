@@ -17,7 +17,9 @@
                     <group>
 
                       <group string="Material" col="2">
-                        <field name="raw_material_product_id" />
+                        <field
+                            name="raw_material_product_id"
+                            domain="[('raw_material_product_attrs_valid', '=', True)]" />
                         <field name="raw_material_product_standard_price" />
                         <field name="raw_material_product_cost_currency_id" />
                         <field name="current_rate_usd" />
@@ -104,6 +106,7 @@
                     <field
                         name="shrinkage_percentage_to_computation_total_thousands"
                         invisible="1"/>
+
 
                     <footer>
                         <button

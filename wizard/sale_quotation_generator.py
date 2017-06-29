@@ -34,7 +34,9 @@ class SaleQuotationGenerator(models.TransientModel):
     asociated to the operations of pack system."""
 
     raw_material_product_id = fields.Many2one(
-        'product.product', 'Material', required=True)
+        'product.product',
+        'Material',
+        required=True)
     raw_material_product_standard_price = fields.Float(
         related='raw_material_product_id.standard_price',
         readonly=True,
