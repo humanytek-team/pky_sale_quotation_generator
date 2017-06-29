@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record id="supplier_1" model="res.partner">
+      <field name="name">PEL PLAST SA DE CV</field>
+      <field name="supplier" eval="True" />
+      <field name="customer" eval="False" />
+    </record>
+
+    <record id="supplier_2" model="res.partner">
+      <field name="name">YUNCHENG</field>
+      <field name="supplier" eval="True" />
+      <field name="customer" eval="False" />
+    </record>
+
+    <record id="supplier_3" model="res.partner">
+      <field name="name">KLOCKNER</field>
+      <field name="supplier" eval="True" />
+      <field name="customer" eval="False" />
+    </record>
+
+  </data>
+</openerp>
