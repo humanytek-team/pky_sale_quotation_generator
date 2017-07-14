@@ -38,8 +38,8 @@
                       </group>
 
                       <group string="Flat width based on bottle" col="2">
-                        <field name="cut_based_on_bottle" />
                         <field name="flat_width_mm" />
+                        <field name="cut_based_on_bottle" />
                         <field name="overlapping" />
                         <field name="coil_width_mm" />
                         <field name="shrinkage_percentage" />
