@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.0] - 2017-07-14
+### Changed
+- Order of fields flat_width_mm and cut_based_on_bottle changed in the form view of wizard for better presentation to the user.
+- Field overlapping was changed for set default value to 19.
+
 ## [1.0.0] - 2017-06-28
 ### Added
 - Add new wizard, for now only just request the material (product) to use for the quotation to generate for the new product to be manufactured.

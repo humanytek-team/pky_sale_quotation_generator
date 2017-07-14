@@ -78,7 +78,7 @@ class SaleQuotationGenerator(models.TransientModel):
         'Total ink cost', compute='_compute_total_ink_cost')
     glue_other_expenses = fields.Float('Glue and Other Expenses')
     flat_width_mm = fields.Float('Flat Width (mm)', required=True)
-    overlapping = fields.Float('Overlapping', required=True)
+    overlapping = fields.Float('Overlapping', required=True, default=19)
     coil_width_mm = fields.Float(
         'Coil Width (mm)', compute='_compute_coil_width_mm')
     coil_width_cm = fields.Float(
