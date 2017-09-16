@@ -3,10 +3,11 @@
     'name': "pky_sale_quotation_generator",
     'summary': """
         Adds a wizard that allow generate new quotations based on parameters
-        asociated to the operations of the company Pack System.""",
+        asociated to the operations of the company.""",
     'description': """
-        Extension of addon sale for add a wizard that allow generate new quotations
-        based on parameters asociated to the operations of the company Pack System.
+        Extension of addon sale for add a wizard that allow generate new
+        quotations based on parameters asociated to the operations of the
+        company.
     """,
     'author': "Humanytek",
     'website': "http://www.humanytek.com",
