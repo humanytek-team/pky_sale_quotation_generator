@@ -1,328 +1,327 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* pky_sale_quotation_generator
+#	* pky_sale_quotation_generator
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-20170207\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-09-17 11:20+0000\n"
-"PO-Revision-Date: 2017-09-17 07:22-0400\n"
+"PO-Revision-Date: 2017-09-17 11:20+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: es_MX\n"
-"X-Generator: Poedit 1.8.11\n"
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute.value,name:pky_sale_quotation_generator.product_attribute_density_value_1
 msgid "1.27"
-msgstr "1.27"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute.value,name:pky_sale_quotation_generator.product_attribute_density_value_2
 msgid "1.33"
-msgstr "1.33"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute.value,name:pky_sale_quotation_generator.product_attribute_width_value_2
 msgid "181"
-msgstr "181"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.template,description:pky_sale_quotation_generator.product_pvc_f_product_template
 msgid "2,501 A 10,000 KG"
-msgstr "2,501 A 10,000 KG"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute.value,name:pky_sale_quotation_generator.product_attribute_length_value_1
 msgid "2000"
-msgstr "2000"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute.value,name:pky_sale_quotation_generator.product_attribute_width_value_1
 msgid "225"
-msgstr "225"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute.value,name:pky_sale_quotation_generator.product_attribute_thickness_value_3
 msgid "40"
-msgstr "40"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute.value,name:pky_sale_quotation_generator.product_attribute_thickness_value_1
 msgid "45"
-msgstr "45"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute.value,name:pky_sale_quotation_generator.product_attribute_thickness_value_2
 msgid "50"
-msgstr "50"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 #: field:sale.quotation.generator,raw_material_product_attr_value_ids:0
 msgid "Attributes"
-msgstr "Propiedades del Material"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,business_value:0
 msgid "Business Value"
-msgstr "Valor de Negocio"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,coil_weight_kg:0
 msgid "Coil Weight (kg)"
-msgstr "Peso de Bobina (kg)"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,coil_width_cm:0
 msgid "Coil Width (cm)"
-msgstr "Ancho de Bobina (cm)"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,coil_width_mm:0
 msgid "Coil Width (mm)"
-msgstr "Ancho de Bobina (mm)"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,ink_product_standard_price:0
 #: field:sale.quotation.generator,raw_material_product_standard_price:0
 msgid "Cost Price"
-msgstr "Precio de Coste"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,cost_per_thousand:0
 msgid "Cost per thousand"
-msgstr "Costo por Millar"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: help:sale.quotation.generator,ink_product_standard_price:0
 #: help:sale.quotation.generator,raw_material_product_standard_price:0
 msgid "Cost price of the product template used for standard stock valuation in accounting and used as a base price on purchase orders. Expressed in the default unit of measure of the product."
-msgstr "t"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,create_uid:0
 #: field:sale.quotation.generator,create_uid:0
 msgid "Created by"
-msgstr "Created by"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,create_date:0
 #: field:sale.quotation.generator,create_date:0
 msgid "Created on"
-msgstr "Created on"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,ink_product_cost_currency_id:0
 #: field:sale.quotation.generator,raw_material_product_cost_currency_id:0
 msgid "Currency"
-msgstr "Moneda"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: help:sale.quotation.generator,ink_product_cost_currency_id:0
 #: help:sale.quotation.generator,raw_material_product_cost_currency_id:0
 msgid "Currency used in cost of the product."
-msgstr "Moneda del precio de coste del producto"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,current_rate_usd:0
 msgid "Current rate usd"
-msgstr "Tipo de Cambio Actual USD"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,customer_id:0
 msgid "Customer"
-msgstr "Customer"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,cut_based_on_bottle:0
 msgid "Cut (mm)"
-msgstr "Corte (mm)"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute,name:pky_sale_quotation_generator.product_attribute_density
 msgid "Density"
-msgstr "Densidad"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,display_name:0
 #: field:sale.quotation.generator,display_name:0
 msgid "Display Name"
-msgstr "Display Name"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: help:product.product,raw_material_product_attrs_valid:0
 msgid "Field used by wizard sale order generator"
-msgstr "Field used by wizard sale order generator"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,flat_width_mm:0
 msgid "Flat Width (mm)"
-msgstr "Ancho Plano (mm)"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Flat width based on bottle"
-msgstr "Ancho plano en base a botella"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: code:addons/pky_sale_quotation_generator/models/price_range_per_thousand.py:138
 #, python-format
 msgid "From {0} To {1} Thousands"
-msgstr "{0} A {1} Millares"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Generate quotations"
-msgstr "Generar Cotizaciones"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,glue_other_expenses:0
 msgid "Glue and Other Expenses"
-msgstr "Pegamento y Otros Gastos"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
-#: field:price.range.per.thousand,id:0 field:sale.quotation.generator,id:0
+#: field:price.range.per.thousand,id:0
+#: field:sale.quotation.generator,id:0
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.template,description:pky_sale_quotation_generator.product_petga_ms_product_template
 msgid "INDIA encogimiento MEDIO"
-msgstr "INDIA encogimiento MEDIO"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.template,description:pky_sale_quotation_generator.product_petga_b_product_template
 #: model:product.template,description:pky_sale_quotation_generator.product_petga_product_template
 msgid "INDIA encogimiento normal"
-msgstr "INDIA encogimiento normal"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,ink_product_id:0
 msgid "Ink"
-msgstr "Tinta"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Inks"
-msgstr "Tintas"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,__last_update:0
 #: field:sale.quotation.generator,__last_update:0
 msgid "Last Modified on"
-msgstr "Last Modified on"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,write_uid:0
 #: field:sale.quotation.generator,write_uid:0
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,write_date:0
 #: field:sale.quotation.generator,write_date:0
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute,name:pky_sale_quotation_generator.product_attribute_length
 msgid "Length (m)"
-msgstr "Longitud (m)"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,lower_limit:0
 msgid "Lower Limit"
-msgstr "Límite Inferior"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 #: field:sale.quotation.generator,raw_material_product_id:0
 msgid "Material"
-msgstr "Material"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,max_percentage_raw_material_on_sale_price:0
 msgid "Max percentage"
-msgstr "Porcentaje Máximo"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,max_mxn_sale_price_per_thousand_with_printing:0
 msgid "Maximum Sale Price (MXN) per Thousand With Printing"
-msgstr "Precio de Venta Máximo (MXN) por Millar con Impresión"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,max_usd_sale_price_per_thousand_with_printing:0
 msgid "Maximum Sale Price (USD) per Thousand With Printing"
-msgstr "Precio de Venta Máximo (USD) por Millar con Impresión"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,max_sale_price_per_thousand_without_printing:0
 msgid "Maximum Sale Price per Thousand Without Printing"
-msgstr "Precio de Venta Máximo por Millar sin Impresión"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,min_percentage_raw_material_on_sale_price:0
 msgid "Min percentage"
-msgstr "Porcentaje Mínimo"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,min_mxn_sale_price_per_thousand_with_printing:0
 msgid "Minimum Sale Price (MXN) per Thousand With Printing"
-msgstr "Precio de Venta Mínimo (MXN) por Millar con Impresión"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,min_usd_sale_price_per_thousand_with_printing:0
 msgid "Minimum Sale Price (USD) per Thousand With Printing"
-msgstr "Precio de Venta Mínimo (USD) por Millar con Impresión"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,min_sale_price_per_thousand_without_printing:0
 msgid "Minimum Sale Price per Thousand Without Printing"
-msgstr "Precio de Venta Mínimo por Millar sin Impresión"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,new_product_generated:0
 msgid "New product generated"
-msgstr "Producto"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,ink_product_quantity:0
 msgid "Number of inks"
-msgstr "Número de Tintas"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,overlapping:0
 msgid "Overlapping"
-msgstr "Traslape"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.template,name:pky_sale_quotation_generator.product_petg_c_product_template
 #: model:product.template,name:pky_sale_quotation_generator.product_petg_product_template
 #: model:product.template,name:pky_sale_quotation_generator.product_petgb_product_template
 msgid "PETG"
-msgstr "PETG"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.template,name:pky_sale_quotation_generator.product_petga_b_product_template
 #: model:product.template,name:pky_sale_quotation_generator.product_petga_product_template
 msgid "PETGA"
-msgstr "PETGA"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.template,name:pky_sale_quotation_generator.product_petga_ms_product_template
 msgid "PETGA-MS"
-msgstr "PETGA-MS"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.template,name:pky_sale_quotation_generator.product_pvc_b_product_template
@@ -332,188 +331,188 @@ msgstr "PETGA-MS"
 #: model:product.template,name:pky_sale_quotation_generator.product_pvc_f_product_template
 #: model:product.template,name:pky_sale_quotation_generator.product_pvc_product_template
 msgid "PVC"
-msgstr "PVC"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.template,name:pky_sale_quotation_generator.product_pvc_sx_b_product_template
 #: model:product.template,name:pky_sale_quotation_generator.product_pvc_sx_product_template
 msgid "PVC-SX"
-msgstr "PVC-SX"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.template,description:pky_sale_quotation_generator.product_pvc_b_product_template
 #: model:product.template,description:pky_sale_quotation_generator.product_pvc_product_template
 msgid "Para 3 Tintas o menos"
-msgstr "Para 3 Tintas o menos"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,percentage_raw_material_on_sale_price:0
 msgid "Percentage of Raw Material"
-msgstr "Porcentaje "
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: code:addons/pky_sale_quotation_generator/wizard/sale_quotation_generator.py:523
 #, python-format
 msgid "Prices quoted by range: \n"
-msgstr "Precios cotizados por rango: \n"
+""
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:ir.model,name:pky_sale_quotation_generator.model_product_product
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:product.product,raw_material_product_attrs_valid:0
 msgid "Product has attributes valid ?"
-msgstr "Product has attributes valid ?"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Product to quote"
-msgstr "Producto a Cotizar"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:ir.actions.act_window,name:pky_sale_quotation_generator.action_sale_quotation_generator
 #: model:ir.ui.menu,name:pky_sale_quotation_generator.menu_action_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Quotations Generator"
-msgstr "Generador de Cotizaciones"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Range of Prices per Thousand"
-msgstr "Rango de Precios a Cotizar"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,price_range_per_thousand_ids:0
 msgid "Range of prices per thousand"
-msgstr "Rango de Precios a Cotizar"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,raw_material_product_length_cm:0
 msgid "Raw material product length cm"
-msgstr "Longitud (cm) del material"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,raw_material_product_length_mm:0
 msgid "Raw material product length mm"
-msgstr "Longitud (mm) del material"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,raw_material_product_thickness_cm:0
 msgid "Raw material product thickness cm"
-msgstr "Espesor (cm) del material"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,required_initial_volume:0
 msgid "Required initial volume"
-msgstr "Volumen Inicial Requerido"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.template,description:pky_sale_quotation_generator.product_pvc_e_product_template
 msgid "SOPLADO"
-msgstr "SOPLADO"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,sale_price_per_thousand_mxn:0
 msgid "Sale Price Per Thousand (MXN)"
-msgstr "Precio de Venta por Millar (MXN)"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,sale_price_per_thousand_usd:0
 msgid "Sale Price Per Thousand (USD)"
-msgstr "Precio de Venta por Millar (USD)"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,sale_price_per_thousand_without_printing:0
 msgid "Sale Price Per Thousand Without Printing"
-msgstr "Precio de Venta por Millar sin Impresión"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,sale_quotation_generator_id:0
 msgid "Sale Quotation Generator (Wizard)"
-msgstr "Generador de Cotizaciones (Asistente)"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Sellers"
-msgstr "Proveedor"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,shrinkage_percentage:0
 msgid "Shrinkage Percentage"
-msgstr "Porcentaje de Merma"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,shrinkage_percentage_to_computation_total_thousands:0
 msgid "Shrinkage Percentage to Computation of Total Thousands"
-msgstr "Porcentaje de merma preparado para el calculo de total de millares"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,raw_material_product_seller_ids:0
 msgid "Supplier"
-msgstr "Proveedor"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,text_range_of_thousand:0
 msgid "Text of Range of Thousands"
-msgstr "Text of Range of Thousands"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute,name:pky_sale_quotation_generator.product_attribute_thickness
 msgid "Thickness"
-msgstr "Espesor"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:ir.model,name:pky_sale_quotation_generator.model_sale_quotation_generator
-msgid ""
-"This wizard will generate quotations based on parameters\n"
+msgid "This wizard will generate quotations based on parameters\n"
 "    asociated to the operations of pack system."
-msgstr "Este asistente le permitirá generar cotizaciones basadas en parametros asociados a las operaciones de pack system."
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
-msgid ""
-"This wizard will generate quotations based on parameters asociated to the\n"
+msgid "This wizard will generate quotations based on parameters asociated to the\n"
 "                      operations of pack system."
-msgstr "Este asistente le permitirá generar una cotización basado en los parametros a continuación:"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.uom,name:pky_sale_quotation_generator.product_uom_thousand
 msgid "Thousand"
-msgstr "Millar"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,total_thousands_new_product:0
 msgid "Thousands"
-msgstr "Millares"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,total_cost_coil:0
 msgid "Total Cost of the Coil"
-msgstr "Costo Total de la Bobina"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:sale.quotation.generator,total_ink_cost:0
 msgid "Total ink cost"
-msgstr "Costo Total "
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: field:price.range.per.thousand,upper_limit:0
 msgid "Upper Limit"
-msgstr "Límite Superior"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "Value in percentage of raw material on total sale price per thousand"
-msgstr "Valor en porcentaje de materia prima sobre precio de venta total por millar"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: model:product.attribute,name:pky_sale_quotation_generator.product_attribute_width
 msgid "Width"
-msgstr "Ancho"
+msgstr ""
 
 #. module: pky_sale_quotation_generator
 #: view:sale.quotation.generator:pky_sale_quotation_generator.sale_quotation_generator_form_view
 msgid "or"
-msgstr "o"
+msgstr ""
+
