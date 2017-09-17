@@ -21,6 +21,7 @@
 ###############################################################################
 
 from openerp import api, fields, models
+from openerp.tools.translate import _
 
 
 class SaleQuotationGenerator(models.TransientModel):
@@ -491,6 +492,7 @@ class SaleQuotationGenerator(models.TransientModel):
             'pky_sale_quotation_generator.product_uom_thousand')
         if product_uom_thousand:
             product_data['uom_id'] = product_uom_thousand.id
+            product_data['uom_po_id'] = product_uom_thousand.id
 
         product_data['sale_ok'] = True
         product_data['purchase_ok'] = False
@@ -517,6 +519,16 @@ class SaleQuotationGenerator(models.TransientModel):
         if usd_currency:
             product_data['currency_id'] = usd_currency.id
 
+        if self.price_range_per_thousand_ids:
+            product_data['description'] = _('Prices quoted by range: \n')
+            product_data['description'] += ',\n'.join(
+                [
+                    '{0} - {1} USD'.format(prices_range.text_range_of_thousand,
+                    round(prices_range.sale_price_per_thousand_usd, 2))
+                    for prices_range in self.price_range_per_thousand_ids
+                    ])
+
+        product_data['type'] = 'product'
         product = Product.create(product_data)
 
         sale_order_data['partner_id'] = self.customer_id.id

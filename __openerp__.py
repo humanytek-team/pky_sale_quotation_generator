@@ -12,7 +12,7 @@
     'author': "Humanytek",
     'website': "http://www.humanytek.com",
     'category': 'Sales Management',
-    'version': '0.1.0',
+    'version': '1.2.0',
     'depends': ['sale', 'mrp', 'purchase_product_cost_currency'],
     'data': [
         'data/product_attribute.xml',
